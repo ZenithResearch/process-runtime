@@ -1,0 +1,309 @@
+{
+  "ancestors": {
+    "contract-tests": [
+      "implement",
+      "scope"
+    ],
+    "implement": [
+      "scope"
+    ],
+    "package": [
+      "contract-tests",
+      "implement",
+      "review",
+      "scope",
+      "unit-tests"
+    ],
+    "review": [
+      "contract-tests",
+      "implement",
+      "scope",
+      "unit-tests"
+    ],
+    "scope": [],
+    "unit-tests": [
+      "implement",
+      "scope"
+    ]
+  },
+  "compiler": "process-runtime.compiler.v1",
+  "inputs": {
+    "change_request": {
+      "kind": "string"
+    },
+    "repository_snapshot": {
+      "kind": "artifact"
+    }
+  },
+  "process_id": "development-sop-v1",
+  "roots": [
+    "scope"
+  ],
+  "schema": "process.compiled.v1",
+  "steps": [
+    {
+      "bindings": {
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        }
+      },
+      "capabilities": [
+        "development.contract-tests"
+      ],
+      "depends_on": [
+        "implement"
+      ],
+      "inputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "passed": {
+          "kind": "boolean"
+        },
+        "report": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "contract-tests",
+      "title": "Run public contract compatibility tests"
+    },
+    {
+      "bindings": {
+        "plan": {
+          "name": "plan",
+          "source": "step_output",
+          "step_id": "scope"
+        },
+        "repository_snapshot": {
+          "name": "repository_snapshot",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "development.implement"
+      ],
+      "depends_on": [
+        "scope"
+      ],
+      "inputs": {
+        "plan": {
+          "kind": "artifact"
+        },
+        "repository_snapshot": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "implement",
+      "title": "Implement the scoped change"
+    },
+    {
+      "bindings": {
+        "approved": {
+          "name": "approved",
+          "source": "step_output",
+          "step_id": "review"
+        },
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        },
+        "review": {
+          "name": "review",
+          "source": "step_output",
+          "step_id": "review"
+        }
+      },
+      "capabilities": [
+        "development.package"
+      ],
+      "depends_on": [
+        "review"
+      ],
+      "inputs": {
+        "approved": {
+          "kind": "boolean"
+        },
+        "patch": {
+          "kind": "artifact"
+        },
+        "review": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "bundle": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "package",
+      "title": "Record the reviewed patch and evidence"
+    },
+    {
+      "bindings": {
+        "contract_passed": {
+          "name": "passed",
+          "source": "step_output",
+          "step_id": "contract-tests"
+        },
+        "contract_report": {
+          "name": "report",
+          "source": "step_output",
+          "step_id": "contract-tests"
+        },
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        },
+        "unit_passed": {
+          "name": "passed",
+          "source": "step_output",
+          "step_id": "unit-tests"
+        },
+        "unit_report": {
+          "name": "report",
+          "source": "step_output",
+          "step_id": "unit-tests"
+        }
+      },
+      "capabilities": [
+        "development.review"
+      ],
+      "depends_on": [
+        "contract-tests",
+        "unit-tests"
+      ],
+      "inputs": {
+        "contract_passed": {
+          "kind": "boolean"
+        },
+        "contract_report": {
+          "kind": "artifact"
+        },
+        "patch": {
+          "kind": "artifact"
+        },
+        "unit_passed": {
+          "kind": "boolean"
+        },
+        "unit_report": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "approved": {
+          "kind": "boolean"
+        },
+        "review": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "review",
+      "title": "Review implementation and evidence"
+    },
+    {
+      "bindings": {
+        "change_request": {
+          "name": "change_request",
+          "source": "run_input"
+        },
+        "repository_snapshot": {
+          "name": "repository_snapshot",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "development.scope"
+      ],
+      "depends_on": [],
+      "inputs": {
+        "change_request": {
+          "kind": "string"
+        },
+        "repository_snapshot": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "plan": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "scope",
+      "title": "Clarify scope and verification plan"
+    },
+    {
+      "bindings": {
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        }
+      },
+      "capabilities": [
+        "development.unit-tests"
+      ],
+      "depends_on": [
+        "implement"
+      ],
+      "inputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "passed": {
+          "kind": "boolean"
+        },
+        "report": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "unit-tests",
+      "title": "Run focused unit tests"
+    }
+  ],
+  "title": "Develop and verify an isolated change",
+  "topological_order": [
+    "scope",
+    "implement",
+    "contract-tests",
+    "unit-tests",
+    "review",
+    "package"
+  ]
+}

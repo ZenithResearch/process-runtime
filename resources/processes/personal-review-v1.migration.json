@@ -1,0 +1,61 @@
+{
+  "classified_differences": [
+    {
+      "after": [
+        "step_1"
+      ],
+      "before": [],
+      "category": "dependency-repair",
+      "reason": "Both Markdown steps consume outputs of load_review; declared producer dependencies are required.",
+      "steps": [
+        "step_2",
+        "step_3"
+      ]
+    },
+    {
+      "category": "artifact-identity",
+      "ports": {
+        "audio_asset_path": "audio_asset",
+        "review_note_path": "review_note",
+        "review_packet_path": "review_packet",
+        "transcript_note_path": "transcript_note"
+      },
+      "reason": "Content-addressed ArtifactRef values replace mutable filesystem paths. Source assets are supplied as verified artifact references."
+    },
+    {
+      "category": "closed-types",
+      "reason": "Explicit normalized event, component, observation and context fields replace untyped arrays. Rich raw evidence remains in retained artifacts; extra undeclared fields are rejected."
+    },
+    {
+      "added_outputs": [
+        "review_packet",
+        "review_packet_status"
+      ],
+      "category": "immutable-final-packet",
+      "consumed_by": "step_8",
+      "reason": "Legacy step_7 overwrites the path returned by step_5; emit a new final packet artifact and quality status so writeback consumes immutable source-bound evidence.",
+      "step": "step_7"
+    },
+    {
+      "category": "shadow-only",
+      "reason": "Fixture review-status and vault outputs are retained values only; no actual status, STT, filesystem note or external service operation runs."
+    }
+  ],
+  "handlers": {
+    "step_1": "load_review",
+    "step_2": "transcribe",
+    "step_3": "resolve_components",
+    "step_4": "annotate",
+    "step_5": "extract",
+    "step_6": "bind_source",
+    "step_7": "write_review",
+    "step_8": "write_status",
+    "step_9": "daily_note"
+  },
+  "process_id": "personal-review-v1",
+  "schema": "runtime.process-migration.v1",
+  "source_hashes": {
+    "markdown": "257b5ccb6d7add490500983cf2c85b8157cbf919373bcb8199e2ff82fa7d829b",
+    "profile": "67cc9e88db28452f567f98ca36db6c613e0c737187c095e2cf8b0b0e46e783d9"
+  }
+}

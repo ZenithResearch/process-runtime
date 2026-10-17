@@ -1,0 +1,93 @@
+{
+  "artifacts": {
+    "bundle": {
+      "content_utf8": "Synthetic reviewed evidence bundle; never published.\n",
+      "media_type": "text/plain"
+    },
+    "contract": {
+      "content_utf8": "{\"fixture\":\"contract\",\"passed\":true}",
+      "media_type": "application/json"
+    },
+    "patch": {
+      "content_utf8": "Synthetic patch artifact; never applied.\n",
+      "media_type": "text/x-diff"
+    },
+    "plan": {
+      "content_utf8": "Implement a pure fixture function; verify unit and consumer contracts.\n",
+      "media_type": "text/plain"
+    },
+    "repository": {
+      "content_utf8": "Synthetic repository snapshot; no working checkout is used.\n",
+      "media_type": "text/plain"
+    },
+    "review": {
+      "content_utf8": "Synthetic review approves the retained patch and both reports.\n",
+      "media_type": "text/plain"
+    },
+    "unit": {
+      "content_utf8": "{\"fixture\":\"unit\",\"passed\":true}",
+      "media_type": "application/json"
+    }
+  },
+  "inputs": {
+    "change_request": "Add a pure fixture function and its contract.",
+    "repository_snapshot": {
+      "$artifact": "repository"
+    }
+  },
+  "scenario_id": "development-success",
+  "schema": "runtime.shadow-fixture.v1",
+  "steps": {
+    "contract-tests": {
+      "outcome": "succeeded",
+      "outputs": {
+        "passed": true,
+        "report": {
+          "$artifact": "contract"
+        }
+      }
+    },
+    "implement": {
+      "outcome": "succeeded",
+      "outputs": {
+        "patch": {
+          "$artifact": "patch"
+        }
+      }
+    },
+    "package": {
+      "outcome": "succeeded",
+      "outputs": {
+        "bundle": {
+          "$artifact": "bundle"
+        }
+      }
+    },
+    "review": {
+      "outcome": "succeeded",
+      "outputs": {
+        "approved": true,
+        "review": {
+          "$artifact": "review"
+        }
+      }
+    },
+    "scope": {
+      "outcome": "succeeded",
+      "outputs": {
+        "plan": {
+          "$artifact": "plan"
+        }
+      }
+    },
+    "unit-tests": {
+      "outcome": "succeeded",
+      "outputs": {
+        "passed": true,
+        "report": {
+          "$artifact": "unit"
+        }
+      }
+    }
+  }
+}

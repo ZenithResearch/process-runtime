@@ -1,0 +1,321 @@
+{
+  "authority_mode": "local_dev_untrusted",
+  "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+  "external_effects": "forbidden",
+  "failures": [],
+  "final_step_states": {
+    "step_1": "succeeded",
+    "step_2": "succeeded",
+    "step_3": "succeeded",
+    "step_4": "succeeded",
+    "step_5": "succeeded",
+    "step_6": "succeeded",
+    "step_7": "succeeded",
+    "step_8": "succeeded",
+    "step_9": "succeeded"
+  },
+  "process_id": "personal-review-v1",
+  "run_state": "succeeded",
+  "runnable_trace": [
+    {
+      "round": 0,
+      "runnable": [
+        "step_1"
+      ]
+    },
+    {
+      "round": 1,
+      "runnable": [
+        "step_2",
+        "step_3"
+      ]
+    },
+    {
+      "round": 2,
+      "runnable": [
+        "step_4"
+      ]
+    },
+    {
+      "round": 3,
+      "runnable": [
+        "step_5"
+      ]
+    },
+    {
+      "round": 4,
+      "runnable": [
+        "step_6"
+      ]
+    },
+    {
+      "round": 5,
+      "runnable": [
+        "step_7"
+      ]
+    },
+    {
+      "round": 6,
+      "runnable": [
+        "step_8"
+      ]
+    },
+    {
+      "round": 7,
+      "runnable": [
+        "step_9"
+      ]
+    },
+    {
+      "round": 8,
+      "runnable": []
+    }
+  ],
+  "scenario_id": "personal-review-success",
+  "schema": "runtime.shadow-report.v1",
+  "steps": [
+    {
+      "input_digest": "ff3ac593fcd0d60502575a03707cfbe50968e06e1a9334ff71b093ea58c79590",
+      "outcome": "succeeded",
+      "output_digest": "6050e9f6c426769cd3cbfc220851f2a60c6a802ef8c6dc2603f8a1202437b84d",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_1-1",
+        "fence": 1,
+        "input_digest": "ff3ac593fcd0d60502575a03707cfbe50968e06e1a9334ff71b093ea58c79590",
+        "outcome": "succeeded",
+        "output_digest": "6050e9f6c426769cd3cbfc220851f2a60c6a802ef8c6dc2603f8a1202437b84d",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_1-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_1"
+      },
+      "receipt_digest": "df1766b44d767e38d8e628fc1b05275cdecafea137ba58c0dec4ad2a358ffba6",
+      "step_id": "step_1"
+    },
+    {
+      "input_digest": "8c5329359d48c0af3cec06b50840a797b1d6c1a9d68fa5a16296c8f3d5602194",
+      "outcome": "succeeded",
+      "output_digest": "9a58c5def0e5d60c9a4b8e6abbb2352bcef52ce709cab846271fcf0e7477a996",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_2-1",
+        "fence": 1,
+        "input_digest": "8c5329359d48c0af3cec06b50840a797b1d6c1a9d68fa5a16296c8f3d5602194",
+        "outcome": "succeeded",
+        "output_digest": "9a58c5def0e5d60c9a4b8e6abbb2352bcef52ce709cab846271fcf0e7477a996",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_2-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_2"
+      },
+      "receipt_digest": "5683702bf83c9a806d970002d9522b6bdf1cb2b690f69f00ba5f6b8ee9f5c2c0",
+      "step_id": "step_2"
+    },
+    {
+      "input_digest": "87be74fa3411fdcbc72756eb8b1314428f448dac636ad30bec333443bdf7d957",
+      "outcome": "succeeded",
+      "output_digest": "29441b981d74a0dc3e866f408a82f843e36b705601ec65233d85adfd8a77e8c4",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_3-1",
+        "fence": 1,
+        "input_digest": "87be74fa3411fdcbc72756eb8b1314428f448dac636ad30bec333443bdf7d957",
+        "outcome": "succeeded",
+        "output_digest": "29441b981d74a0dc3e866f408a82f843e36b705601ec65233d85adfd8a77e8c4",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_3-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_3"
+      },
+      "receipt_digest": "5de1edc9153c28a5d6cf517f8e54d0f88df12f49438d97d268145c15ca7aea1f",
+      "step_id": "step_3"
+    },
+    {
+      "input_digest": "7cfcf8c4d46bd1cd12b589a598a578776b2ba26e134cc92c7602b58ac5a04cc8",
+      "outcome": "succeeded",
+      "output_digest": "7109d0e4f01b6a65fd551a659ff0387b240a1cc20b6fc6b35a9974665d945b2c",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_4-1",
+        "fence": 1,
+        "input_digest": "7cfcf8c4d46bd1cd12b589a598a578776b2ba26e134cc92c7602b58ac5a04cc8",
+        "outcome": "succeeded",
+        "output_digest": "7109d0e4f01b6a65fd551a659ff0387b240a1cc20b6fc6b35a9974665d945b2c",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_4-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_4"
+      },
+      "receipt_digest": "ec692aee6bfcc02c5ef20d95e1f67345e40a03d44ce82ea7048bcf7ceb4d4c91",
+      "step_id": "step_4"
+    },
+    {
+      "input_digest": "20f38cb6b703b855d638ba9dd31b8c2c3041c5b305d82e5df6bb9b0537b8926b",
+      "outcome": "succeeded",
+      "output_digest": "3d1b91fc87cd7007a19565df07f5c81d55251104244a98209bb8bb636846612c",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_5-1",
+        "fence": 1,
+        "input_digest": "20f38cb6b703b855d638ba9dd31b8c2c3041c5b305d82e5df6bb9b0537b8926b",
+        "outcome": "succeeded",
+        "output_digest": "3d1b91fc87cd7007a19565df07f5c81d55251104244a98209bb8bb636846612c",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_5-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_5"
+      },
+      "receipt_digest": "9975deb6e628daeb5ed6b823f07532d64910879bd1764b1d0f9c3c46edd0d51b",
+      "step_id": "step_5"
+    },
+    {
+      "input_digest": "45668bb53f2eb137cc81c13aa870d06ff48f1a757c33d93ca73779b831b6997c",
+      "outcome": "succeeded",
+      "output_digest": "f6eeb34156619a05e57a0e3ab925142cec4f308743f7fa5c8dd8962973671705",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_6-1",
+        "fence": 1,
+        "input_digest": "45668bb53f2eb137cc81c13aa870d06ff48f1a757c33d93ca73779b831b6997c",
+        "outcome": "succeeded",
+        "output_digest": "f6eeb34156619a05e57a0e3ab925142cec4f308743f7fa5c8dd8962973671705",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_6-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_6"
+      },
+      "receipt_digest": "d6e44e46ee569b1757d58b5d89426a4b6bf58446b8beb734276ee89445cfbbee",
+      "step_id": "step_6"
+    },
+    {
+      "input_digest": "6bb25e1d5f2187eec0c953a985182a7864e6399b74ecd39d3e09b1df8796cd9e",
+      "outcome": "succeeded",
+      "output_digest": "9d58e0252ccdc297582bf6cbae8001b932fb8595592737e850ca8286bc0a878c",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_7-1",
+        "fence": 1,
+        "input_digest": "6bb25e1d5f2187eec0c953a985182a7864e6399b74ecd39d3e09b1df8796cd9e",
+        "outcome": "succeeded",
+        "output_digest": "9d58e0252ccdc297582bf6cbae8001b932fb8595592737e850ca8286bc0a878c",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_7-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_7"
+      },
+      "receipt_digest": "5a4d4bb043e10dec9011532f608d08dcc4b2727467a3b40b5e6aa15bd452f9c2",
+      "step_id": "step_7"
+    },
+    {
+      "input_digest": "c29c0f8649174c4ba967795a4cc640fe0db10c579428f54889fa6c17ed40e565",
+      "outcome": "succeeded",
+      "output_digest": "ff1faa5458e60b728adf4ed9638fa64383f49358cdb7f70ca511b787b19d37fe",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_8-1",
+        "fence": 1,
+        "input_digest": "c29c0f8649174c4ba967795a4cc640fe0db10c579428f54889fa6c17ed40e565",
+        "outcome": "succeeded",
+        "output_digest": "ff1faa5458e60b728adf4ed9638fa64383f49358cdb7f70ca511b787b19d37fe",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_8-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_8"
+      },
+      "receipt_digest": "65c7b924f73ad80449f674d7be726e812b51daa1a762e1362edf4b6f6b21a40e",
+      "step_id": "step_8"
+    },
+    {
+      "input_digest": "aaafa0e1b8c311577477a940e3821c304f16914d9cf8c53d723d04ecb67c917f",
+      "outcome": "succeeded",
+      "output_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-step_9-1",
+        "fence": 1,
+        "input_digest": "aaafa0e1b8c311577477a940e3821c304f16914d9cf8c53d723d04ecb67c917f",
+        "outcome": "succeeded",
+        "output_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "pin": {
+          "compilation_hash": "911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaad1cb01c61572eb25",
+          "process_id": "personal-review-v1",
+          "process_version": "shadow-version-911747b69cf2b2f58a10db76ac3d523b96acbc103d2adcaa"
+        },
+        "receipt_id": "receipt-shadow-attempt-step_9-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-personal-review-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "step_9"
+      },
+      "receipt_digest": "7390e062d125ffb3978bd8dadfabe155a89e55f61e7e5ccef750c4a235e6d342",
+      "step_id": "step_9"
+    }
+  ]
+}

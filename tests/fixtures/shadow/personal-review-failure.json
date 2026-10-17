@@ -1,0 +1,200 @@
+{
+  "artifacts": {
+    "audio": {
+      "content_utf8": "Synthetic audio descriptor; no audio provider is invoked.\n",
+      "media_type": "text/plain"
+    },
+    "events": {
+      "content_utf8": "[{\"end_ms\": 800, \"event_index\": 0, \"kind\": \"gesture\", \"start_ms\": 0, \"target\": \"fixture dismiss button\"}]",
+      "media_type": "application/json"
+    },
+    "packet": {
+      "content_utf8": "{\"observations\": [{\"component\": \"fixture dismiss button\", \"evidence\": \"Synthetic fixture component has an inset.\", \"issue\": \"The dismiss button should sit at the corner.\", \"match_type\": \"verbal_and_gesture\", \"observation_id\": \"obs-1\", \"selectors\": [\".fixture-dismiss\"], \"type\": \"request\", \"what_they_said\": \"Move the dismiss button to the corner.\"}], \"schema\": \"synthetic.review-packet.v1\", \"silent_annotations\": [], \"status\": \"review_packet_ready\"}",
+      "media_type": "application/json"
+    },
+    "review-note": {
+      "content_utf8": "# Synthetic review\n\nMove the dismiss button to the corner.\n",
+      "media_type": "text/markdown"
+    },
+    "transcript": {
+      "content_utf8": "Move the dismiss button to the corner.\n",
+      "media_type": "text/markdown"
+    }
+  },
+  "inputs": {
+    "audio_asset": {
+      "$artifact": "audio"
+    },
+    "duration_ms": 1000,
+    "events_asset": {
+      "$artifact": "events"
+    },
+    "review_id": "fixture-review",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "subject_id": "fixture://review-surface",
+    "submitted_by": "Synthetic reviewer"
+  },
+  "scenario_id": "personal-review-failure",
+  "schema": "runtime.shadow-fixture.v1",
+  "steps": {
+    "step_1": {
+      "outcome": "succeeded",
+      "outputs": {
+        "audio_asset": {
+          "$artifact": "audio"
+        },
+        "events": [
+          {
+            "end_ms": 800,
+            "event_index": 0,
+            "kind": "gesture",
+            "start_ms": 0,
+            "target": "fixture dismiss button"
+          }
+        ],
+        "review_id_short": "fixture"
+      }
+    },
+    "step_2": {
+      "outcome": "failed",
+      "reason": "Synthetic transcription failure; no provider was called."
+    },
+    "step_3": {
+      "outcome": "succeeded",
+      "outputs": {
+        "component_names": [
+          {
+            "aliases": [
+              "dismiss"
+            ],
+            "component": "fixture dismiss button",
+            "resolution_status": "resolved",
+            "selectors": [
+              ".fixture-dismiss"
+            ],
+            "source": "fixture.tsx:1",
+            "spatial_hint": "top corner"
+          }
+        ]
+      }
+    },
+    "step_4": {
+      "outcome": "succeeded",
+      "outputs": {
+        "resolved_transcript": "Move the [fixture dismiss button] to the corner.",
+        "transcript_note": {
+          "$artifact": "transcript"
+        }
+      }
+    },
+    "step_5": {
+      "outcome": "succeeded",
+      "outputs": {
+        "actionability": {
+          "actionable_now": [
+            "obs-1"
+          ],
+          "design_preference": [],
+          "discarded_or_filtered": [],
+          "needs_human_clarification": [],
+          "non_issue": []
+        },
+        "filtered_points": [],
+        "implementation_handoff": {
+          "files_to_inspect_first": [
+            "fixture.tsx"
+          ],
+          "implementation_tasks": [],
+          "non_goals": [
+            "No implementation is performed by the review process."
+          ],
+          "open_questions": [],
+          "verification_notes": [
+            "Synthetic fixture only."
+          ]
+        },
+        "negative_evidence": {
+          "discarded_events": [],
+          "filtered_points": [],
+          "silent_annotations": []
+        },
+        "observations": [
+          {
+            "component": "fixture dismiss button",
+            "evidence": "Synthetic fixture component has an inset.",
+            "issue": "The dismiss button should sit at the corner.",
+            "match_type": "verbal_and_gesture",
+            "observation_id": "obs-1",
+            "selectors": [
+              ".fixture-dismiss"
+            ],
+            "type": "request",
+            "what_they_said": "Move the dismiss button to the corner."
+          }
+        ],
+        "review_packet": {
+          "$artifact": "packet"
+        },
+        "review_packet_status": "review_packet_ready",
+        "silent_annotations": [],
+        "target_events": [
+          {
+            "end_ms": 800,
+            "event_index": 0,
+            "start_ms": 0,
+            "target": "fixture dismiss button"
+          }
+        ]
+      }
+    },
+    "step_6": {
+      "outcome": "succeeded",
+      "outputs": {
+        "codebase_context": [
+          {
+            "caveats": [
+              "Not a real inspected application"
+            ],
+            "component": "fixture dismiss button",
+            "confidence": "high",
+            "likely_cause": "Fixture inset positioning",
+            "observation_id": "obs-1",
+            "reasoning": "Retained synthetic source evidence",
+            "references": [
+              "fixture.tsx:1"
+            ],
+            "resolution_status": "resolved"
+          }
+        ]
+      }
+    },
+    "step_7": {
+      "outcome": "succeeded",
+      "outputs": {
+        "review_note": {
+          "$artifact": "review-note"
+        },
+        "review_packet": {
+          "$artifact": "packet"
+        },
+        "review_packet_status": "review_packet_ready"
+      }
+    },
+    "step_8": {
+      "outcome": "succeeded",
+      "outputs": {
+        "review_status_updated": {
+          "review_id": "fixture-review",
+          "review_note": {
+            "$artifact": "review-note"
+          },
+          "status": "processed"
+        }
+      }
+    },
+    "step_9": {
+      "outcome": "succeeded",
+      "outputs": {}
+    }
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "fixture_schema": "runtime.consumer-fixtures.v1",
+  "commands": [
+    {
+      "schema": "runtime.command.v1",
+      "operation": "process.draft.put",
+      "request_id": "save-draft-1",
+      "resource": "processes/development-check",
+      "expected_version": null,
+      "payload": {
+        "draft": {
+          "schema": "process.draft.v1",
+          "process_id": "development-check",
+          "inputs": {
+            "source_path": {
+              "kind": "string"
+            }
+          },
+          "steps": [
+            {
+              "step_id": "verify",
+              "depends_on": [],
+              "capabilities": [
+                "test-run"
+              ],
+              "resources": [
+                "workspace"
+              ],
+              "inputs": {
+                "source_path": {
+                  "kind": "string"
+                }
+              },
+              "bindings": {
+                "source_path": {
+                  "source": "run_input",
+                  "name": "source_path"
+                }
+              },
+              "outputs": {
+                "passed": {
+                  "kind": "boolean"
+                }
+              },
+              "max_attempts": 3
+            }
+          ]
+        },
+        "provenance": {
+          "source_id": "development-sop",
+          "media_type": "text/markdown",
+          "content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "parser": "explicit-structured-block.v1",
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "process.publish",
+      "request_id": "publish-1",
+      "resource": "processes/development-check",
+      "expected_version": 1,
+      "payload": {
+        "process_id": "development-check",
+        "draft_revision": 1,
+        "version_id": "development-v1"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "run.create",
+      "request_id": "start-1",
+      "resource": "runs/run-1",
+      "expected_version": null,
+      "payload": {
+        "run_id": "run-1",
+        "pin": {
+          "process_id": "development-check",
+          "process_version": "development-v1",
+          "compilation_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "inputs": {
+          "source_path": "src"
+        }
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "run.cancel",
+      "request_id": "cancel-1",
+      "resource": "runs/run-1",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "reason": "Operator cancelled the requested change"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "run.retry",
+      "request_id": "retry-1",
+      "resource": "runs/run-1",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "reason": "Recovered the unavailable worker"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "artifact.put",
+      "request_id": "artifact-1",
+      "resource": "artifacts/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_version": null,
+      "payload": {
+        "artifact": {
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_length": 0,
+          "media_type": "text/plain"
+        },
+        "content_base64": ""
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "actor.register",
+      "request_id": "register-1",
+      "resource": "actors/frank",
+      "expected_version": null,
+      "payload": {
+        "actor_id": "frank",
+        "capabilities": [
+          "test-run"
+        ],
+        "resources": [
+          "workspace"
+        ]
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "actor.advertise",
+      "request_id": "advertise-1",
+      "resource": "actors/frank",
+      "expected_version": 1,
+      "payload": {
+        "actor_id": "frank",
+        "capabilities": [
+          "test-run"
+        ],
+        "resources": [
+          "workspace"
+        ]
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.claim",
+      "request_id": "claim-1",
+      "resource": "runs/run-1/steps/verify",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "actor_id": "frank",
+        "lease_ms": 30000
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.heartbeat",
+      "request_id": "heartbeat-1",
+      "resource": "runs/run-1/steps/verify",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "lease_ms": 30000
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.complete",
+      "request_id": "complete-1",
+      "resource": "runs/run-1/steps/verify",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "outputs": {
+          "passed": true
+        }
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.fail",
+      "request_id": "fail-1",
+      "resource": "runs/run-1/steps/verify",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "reason": "Compiler returned diagnostics",
+        "retryable": false
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.release",
+      "request_id": "release-1",
+      "resource": "runs/run-1/steps/verify",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "verify",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "reason": "Worker shutting down before any effect"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "handoff.consume",
+      "request_id": "handoff-1",
+      "resource": "handoffs/9c6bf6586a363b3edc2fd09cf75fef80fe85a80312ab3c692fbde40dbf18ed21",
+      "expected_version": null,
+      "payload": {
+        "schema": "service.runtime-handoff.v1",
+        "event_id": "accepted-1",
+        "source": "service-management",
+        "request_id": "request-1",
+        "case_id": "case-1",
+        "plan_revision_id": null,
+        "pin": {
+          "process_id": "development-check",
+          "process_version": "development-v1",
+          "compilation_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "inputs": {
+          "source_path": "src"
+        },
+        "idempotency_key": "accepted-1"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.effect.intent",
+      "request_id": "executor-effect-intent-1",
+      "resource": "runs/run-1/steps/step-1",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "step-1",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "effect_name": "send",
+        "integration": "matrix",
+        "request_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_idempotent": true
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.effect.dispatch",
+      "request_id": "executor-effect-dispatch-1",
+      "resource": "runs/run-1/steps/step-1",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "step-1",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "effect_id": "effect-1"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "executor.effect.observe",
+      "request_id": "executor-effect-observe-1",
+      "resource": "runs/run-1/steps/step-1",
+      "expected_version": 1,
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "step-1",
+        "attempt_id": "attempt-1",
+        "fence": 1,
+        "effect_id": "effect-1",
+        "provider_reference": "provider-1",
+        "outcome": "acknowledged",
+        "observation_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    },
+    {
+      "schema": "runtime.command.v1",
+      "operation": "effect.resolve",
+      "request_id": "effect-resolve-1",
+      "resource": "effects/effect-1",
+      "expected_version": 1,
+      "payload": {
+        "effect_id": "effect-1",
+        "outcome": "succeeded",
+        "provider_reference": "provider-1",
+        "observation_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "reason": "Verified provider state"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "schema": "runtime.query.v1",
+      "operation": "process.get",
+      "payload": {
+        "process_id": "development-check"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "version.get",
+      "payload": {
+        "process_version": "development-v1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "run.get",
+      "payload": {
+        "run_id": "run-1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "work.list",
+      "payload": {
+        "actor_id": "frank",
+        "limit": 25
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "events.list",
+      "payload": {
+        "after": 0,
+        "limit": 25,
+        "run_id": "run-1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "artifact.get",
+      "payload": {
+        "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "receipt.get",
+      "payload": {
+        "receipt_id": "receipt-1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "output.get",
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "step-1",
+        "attempt_id": "attempt-1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "effect.get",
+      "payload": {
+        "effect_id": "effect-1"
+      }
+    },
+    {
+      "schema": "runtime.query.v1",
+      "operation": "attempt.get",
+      "payload": {
+        "run_id": "run-1",
+        "step_id": "step-1",
+        "attempt_id": "attempt-1"
+      }
+    }
+  ],
+  "event": {
+    "schema": "runtime.event.v1",
+    "event_id": "event-1",
+    "sequence": 1,
+    "kind": "attempt.claimed",
+    "resource": "runs/run-1/steps/verify",
+    "resource_version": 1,
+    "request_id": "claim-1",
+    "correlation_id": "run-1",
+    "recorded_at_ms": 1000,
+    "data": {
+      "attempt_id": "attempt-1",
+      "fence": 1
+    }
+  },
+  "result": {
+    "schema": "runtime.result.v1",
+    "request_id": "claim-1",
+    "operation": "executor.claim",
+    "duplicate": false,
+    "resource": "runs/run-1/steps/verify",
+    "version": 1,
+    "result": {
+      "attempt_id": "attempt-1",
+      "fence": 1,
+      "expires_at_ms": 31000
+    }
+  },
+  "error": {
+    "schema": "runtime.error.v1",
+    "request_id": "claim-1",
+    "code": "version_conflict",
+    "detail": "Run changed before the claim",
+    "retryable": false,
+    "current_version": 2
+  },
+  "receipt": {
+    "schema": "runtime.receipt.v1",
+    "receipt_id": "receipt-1",
+    "pin": {
+      "process_id": "development-check",
+      "process_version": "development-v1",
+      "compilation_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "run_id": "run-1",
+    "step_id": "verify",
+    "attempt_id": "attempt-1",
+    "actor_id": "frank",
+    "input_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "output_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "fence": 1,
+    "started_at_ms": 1000,
+    "recorded_at_ms": 2000,
+    "outcome": "succeeded",
+    "signature": null
+  }
+}

@@ -1,0 +1,278 @@
+# Process development-sop-v1
+
+This development SOP scopes a change, implements it, runs independent unit and contract branches, joins their evidence for review, then records a package. It has no Service Request or Case input. The shadow harness emits deterministic artifact values and performs no build, source change, publication or external service call.
+
+Only the explicit process-json block defines executable structure. Surrounding prose is documentation.
+
+```process-json
+{
+  "inputs": {
+    "change_request": {
+      "kind": "string"
+    },
+    "repository_snapshot": {
+      "kind": "artifact"
+    }
+  },
+  "process_id": "development-sop-v1",
+  "schema": "process.draft.v1",
+  "steps": [
+    {
+      "bindings": {
+        "change_request": {
+          "name": "change_request",
+          "source": "run_input"
+        },
+        "repository_snapshot": {
+          "name": "repository_snapshot",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "development.scope"
+      ],
+      "depends_on": [],
+      "inputs": {
+        "change_request": {
+          "kind": "string"
+        },
+        "repository_snapshot": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "plan": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "scope",
+      "title": "Clarify scope and verification plan"
+    },
+    {
+      "bindings": {
+        "plan": {
+          "name": "plan",
+          "source": "step_output",
+          "step_id": "scope"
+        },
+        "repository_snapshot": {
+          "name": "repository_snapshot",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "development.implement"
+      ],
+      "depends_on": [
+        "scope"
+      ],
+      "inputs": {
+        "plan": {
+          "kind": "artifact"
+        },
+        "repository_snapshot": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "implement",
+      "title": "Implement the scoped change"
+    },
+    {
+      "bindings": {
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        }
+      },
+      "capabilities": [
+        "development.unit-tests"
+      ],
+      "depends_on": [
+        "implement"
+      ],
+      "inputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "passed": {
+          "kind": "boolean"
+        },
+        "report": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "unit-tests",
+      "title": "Run focused unit tests"
+    },
+    {
+      "bindings": {
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        }
+      },
+      "capabilities": [
+        "development.contract-tests"
+      ],
+      "depends_on": [
+        "implement"
+      ],
+      "inputs": {
+        "patch": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "passed": {
+          "kind": "boolean"
+        },
+        "report": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "contract-tests",
+      "title": "Run public contract compatibility tests"
+    },
+    {
+      "bindings": {
+        "contract_passed": {
+          "name": "passed",
+          "source": "step_output",
+          "step_id": "contract-tests"
+        },
+        "contract_report": {
+          "name": "report",
+          "source": "step_output",
+          "step_id": "contract-tests"
+        },
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        },
+        "unit_passed": {
+          "name": "passed",
+          "source": "step_output",
+          "step_id": "unit-tests"
+        },
+        "unit_report": {
+          "name": "report",
+          "source": "step_output",
+          "step_id": "unit-tests"
+        }
+      },
+      "capabilities": [
+        "development.review"
+      ],
+      "depends_on": [
+        "unit-tests",
+        "contract-tests"
+      ],
+      "inputs": {
+        "contract_passed": {
+          "kind": "boolean"
+        },
+        "contract_report": {
+          "kind": "artifact"
+        },
+        "patch": {
+          "kind": "artifact"
+        },
+        "unit_passed": {
+          "kind": "boolean"
+        },
+        "unit_report": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "approved": {
+          "kind": "boolean"
+        },
+        "review": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "review",
+      "title": "Review implementation and evidence"
+    },
+    {
+      "bindings": {
+        "approved": {
+          "name": "approved",
+          "source": "step_output",
+          "step_id": "review"
+        },
+        "patch": {
+          "name": "patch",
+          "source": "step_output",
+          "step_id": "implement"
+        },
+        "review": {
+          "name": "review",
+          "source": "step_output",
+          "step_id": "review"
+        }
+      },
+      "capabilities": [
+        "development.package"
+      ],
+      "depends_on": [
+        "review"
+      ],
+      "inputs": {
+        "approved": {
+          "kind": "boolean"
+        },
+        "patch": {
+          "kind": "artifact"
+        },
+        "review": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "bundle": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "development.workspace"
+      ],
+      "step_id": "package",
+      "title": "Record the reviewed patch and evidence"
+    }
+  ],
+  "title": "Develop and verify an isolated change"
+}
+```

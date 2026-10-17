@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "process-runtime"
+version = "0.1.0"
+description = "Storage-neutral process execution contracts and runtime"
+requires-python = ">=3.12,<3.13"
+dependencies = ["jsonschema>=4.25,<5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+process_runtime_client = ["*.json", "py.typed"]
+
+[tool.setuptools.data-files]
+"share/process-runtime/resources/processes" = ["resources/processes/*.json", "resources/processes/*.md"]
+"share/process-runtime/resources/sources" = ["resources/sources/*.json", "resources/sources/*.md"]

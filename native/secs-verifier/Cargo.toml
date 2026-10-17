@@ -1,0 +1,15 @@
+[package]
+name = "process-runtime-secs-verifier"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+secs-server = { package = "server", git = "https://github.com/ZenithResearch/secS-magik", rev = "11e7128e49c6df57f53e4c8b05e72d4bc78d798c" }
+libsec-core = { git = "https://github.com/ZenithResearch/secS-magik", rev = "11e7128e49c6df57f53e4c8b05e72d4bc78d798c" }
+bincode = "=1.3.3"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+ed25519-dalek = "=2.2.0"
+sha2 = "=0.11.0"
+hex = "=0.4.3"

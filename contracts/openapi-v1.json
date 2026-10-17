@@ -1,0 +1,141 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Process Runtime",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8092"
+    }
+  ],
+  "paths": {
+    "/v1/commands": {
+      "post": {
+        "operationId": "commands",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "schema",
+                  "request",
+                  "authority_base64"
+                ],
+                "properties": {
+                  "schema": {
+                    "const": "runtime.transport.v1"
+                  },
+                  "request": {
+                    "$ref": "./runtime-v1.schema.json#/$defs/command"
+                  },
+                  "authority_base64": {
+                    "type": "string",
+                    "description": "Receiver-native evidence bytes; no bearer authority or caller-selected key."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Versioned result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./runtime-v1.schema.json#/$defs/result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed runtime.error.v1"
+          },
+          "401": {
+            "description": "No verified authority"
+          },
+          "403": {
+            "description": "Receiver authorization denied"
+          },
+          "409": {
+            "description": "Version, replay, lease or outcome conflict"
+          },
+          "503": {
+            "description": "Unavailable; exact mutation outcome may require reconciliation"
+          }
+        }
+      }
+    },
+    "/v1/queries": {
+      "post": {
+        "operationId": "queries",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "schema",
+                  "request",
+                  "authority_base64"
+                ],
+                "properties": {
+                  "schema": {
+                    "const": "runtime.transport.v1"
+                  },
+                  "request": {
+                    "$ref": "./runtime-v1.schema.json#/$defs/query"
+                  },
+                  "authority_base64": {
+                    "type": "string",
+                    "description": "Receiver-native evidence bytes; no bearer authority or caller-selected key."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Versioned result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./runtime-v1.schema.json#/$defs/query_result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed runtime.error.v1"
+          },
+          "401": {
+            "description": "No verified authority"
+          },
+          "403": {
+            "description": "Receiver authorization denied"
+          },
+          "409": {
+            "description": "Version, replay, lease or outcome conflict"
+          },
+          "503": {
+            "description": "Unavailable; exact mutation outcome may require reconciliation"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RuntimeContract": {
+        "$ref": "./runtime-v1.schema.json"
+      }
+    }
+  }
+}

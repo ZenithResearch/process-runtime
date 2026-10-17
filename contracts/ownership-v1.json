@@ -1,0 +1,196 @@
+{
+  "schema": "process-execution.ownership.v1",
+  "owners": {
+    "process-runtime": [
+      "ProcessDefinition",
+      "ProcessVersion",
+      "CompiledProcess",
+      "ProcessRun",
+      "StepRun",
+      "Attempt",
+      "Lease",
+      "ActorRegistration",
+      "OutputCommit",
+      "Artifact",
+      "Receipt",
+      "RuntimeEvent",
+      "RuntimeInbox",
+      "RuntimeOutbox",
+      "Actor",
+      "ProcessPin",
+      "ArtifactRef",
+      "RuntimeEffect",
+      "AttemptSpan"
+    ],
+    "service-management": [
+      "ServiceRequest",
+      "Case",
+      "CasePlan",
+      "CasePlanRevision",
+      "ServiceOutbox",
+      "ServiceRuntimeHandoff",
+      "RuntimeProgressProjection"
+    ],
+    "frank": [
+      "IntegrationConfiguration",
+      "DeliveryCorrelation",
+      "ExternalEffectJournal"
+    ],
+    "hub": [
+      "ComponentManifest",
+      "CompositionConfiguration"
+    ],
+    "devgraph": [
+      "ImplementationInitiative",
+      "ImplementationProject",
+      "ImplementationIssue",
+      "ImplementationTask"
+    ]
+  },
+  "references": [
+    {
+      "from": "ProcessRun",
+      "to": "ProcessVersion",
+      "owner": "process-runtime",
+      "binding": "process_id, process_version, compilation_hash"
+    },
+    {
+      "from": "ProcessRun",
+      "to": "Case",
+      "owner": "service-management",
+      "binding": "optional opaque source reference; never a copied Case"
+    },
+    {
+      "from": "CasePlanRevision",
+      "to": "ProcessVersion",
+      "owner": "process-runtime",
+      "binding": "exact immutable version and compilation hash"
+    },
+    {
+      "from": "CasePlanRevision",
+      "to": "ProcessRun",
+      "owner": "process-runtime",
+      "binding": "source-owned outbox handoff and explicit supersession reference"
+    },
+    {
+      "from": "DeliveryCorrelation",
+      "to": "Attempt",
+      "owner": "process-runtime",
+      "binding": "run, step, attempt, fence; delivery provenance grants no authority"
+    },
+    {
+      "from": "ActorRegistration",
+      "to": "AuthenticatedSubject",
+      "owner": "receiver-local identity policy",
+      "binding": "verified subject mapping, distinct from optional Rolodex Actor reference"
+    },
+    {
+      "from": "ProcessRun",
+      "to": "ServiceRequest",
+      "owner": "service-management",
+      "binding": "optional opaque source reference; never a copied ServiceRequest"
+    },
+    {
+      "from": "ServiceRuntimeHandoff",
+      "to": "ProcessVersion",
+      "owner": "process-runtime",
+      "binding": "source-owned outbox carries exact immutable pin and inputs"
+    },
+    {
+      "from": "ServiceRuntimeHandoff",
+      "to": "ProcessRun",
+      "owner": "process-runtime",
+      "binding": "idempotent runtime inbox result; source retains only the acknowledged run reference"
+    },
+    {
+      "from": "RuntimeEffect",
+      "to": "Attempt",
+      "owner": "process-runtime",
+      "binding": "deterministic Attempt/effect-name identity plus run, step, fence and request digest; runtime owns execution and retry decisions"
+    },
+    {
+      "from": "ExternalEffectJournal",
+      "to": "RuntimeEffect",
+      "owner": "process-runtime",
+      "binding": "provider dispatch, observation and retained exact-command evidence refer to canonical runtime effect_id; journal cannot complete runtime work"
+    },
+    {
+      "from": "AttemptSpan",
+      "to": "Attempt",
+      "owner": "process-runtime",
+      "binding": "derived query view of canonical Attempt and terminal receipt; no separate execution aggregate"
+    },
+    {
+      "from": "RuntimeProgressProjection",
+      "to": "ProcessRun",
+      "owner": "process-runtime",
+      "binding": "rebuildable non-canonical event/cursor projection; never updates Case or runtime execution state"
+    }
+  ],
+  "forbidden_hub_aggregates": [
+    "Case",
+    "ServiceRequest",
+    "ProcessRun",
+    "CaseRunBinding"
+  ],
+  "runtime_records": {
+    "process_definition": "ProcessDefinition",
+    "process_version": "ProcessVersion",
+    "process_run": "ProcessRun",
+    "step_run": "StepRun",
+    "attempt": "Attempt",
+    "lease": "Lease",
+    "actor_registration": "ActorRegistration",
+    "output_commit": "OutputCommit",
+    "artifact": "Artifact",
+    "receipt": "Receipt",
+    "external_effect": "RuntimeEffect",
+    "inbox": "RuntimeInbox",
+    "outbox": "RuntimeOutbox"
+  },
+  "query_state_objects": {
+    "process.get": [
+      "ProcessDefinition"
+    ],
+    "version.get": [
+      "ProcessVersion",
+      "CompiledProcess",
+      "ProcessPin"
+    ],
+    "run.get": [
+      "ProcessRun",
+      "StepRun"
+    ],
+    "work.list": [
+      "StepRun",
+      "ProcessPin"
+    ],
+    "events.list": [
+      "RuntimeEvent"
+    ],
+    "artifact.get": [
+      "Artifact",
+      "ArtifactRef"
+    ],
+    "receipt.get": [
+      "Receipt"
+    ],
+    "effect.get": [
+      "RuntimeEffect"
+    ],
+    "attempt.get": [
+      "Attempt",
+      "Lease",
+      "AttemptSpan"
+    ],
+    "output.get": [
+      "OutputCommit",
+      "Receipt",
+      "ProcessPin"
+    ]
+  },
+  "derived_state_objects": [
+    "AttemptSpan",
+    "RuntimeProgressProjection"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "process.draft.v1",
+  "process_id": "personal-review",
+  "title": "Personal review",
+  "inputs": {"notes": {"kind": "string"}},
+  "steps": [
+    {
+      "step_id": "capture", "title": "Capture observations", "depends_on": [],
+      "capabilities": ["notes.read", "review.prepare"], "resources": ["personal.workspace", "notes.source"],
+      "inputs": {"notes": {"kind": "string"}},
+      "bindings": {"notes": {"source": "run_input", "name": "notes"}},
+      "outputs": {"brief": {"kind": "string"}}, "max_attempts": 1
+    },
+    {
+      "step_id": "review", "title": "Review observations", "depends_on": ["capture"],
+      "capabilities": ["review.decide"], "resources": ["personal.workspace"],
+      "inputs": {"brief": {"kind": "string"}, "maximum": {"kind": "integer"}},
+      "bindings": {"brief": {"source": "step_output", "step_id": "capture", "name": "brief"}, "maximum": {"source": "literal", "value": 3}},
+      "outputs": {"decision": {"kind": "object", "properties": {"approved": {"kind": "boolean"}, "reasons": {"kind": "array", "items": {"kind": "string"}}}, "required": ["approved", "reasons"]}},
+      "max_attempts": 1
+    },
+    {
+      "step_id": "record", "title": "Record the review", "depends_on": ["review"],
+      "capabilities": ["review.record"], "resources": ["personal.workspace", "review.store"],
+      "inputs": {"decision": {"kind": "object", "properties": {"approved": {"kind": "boolean"}, "reasons": {"kind": "array", "items": {"kind": "string"}}}, "required": ["approved", "reasons"]}, "original": {"kind": "string"}},
+      "bindings": {"decision": {"source": "step_output", "step_id": "review", "name": "decision"}, "original": {"source": "step_output", "step_id": "capture", "name": "brief"}},
+      "outputs": {"record": {"kind": "artifact"}}, "max_attempts": 1
+    }
+  ]
+}

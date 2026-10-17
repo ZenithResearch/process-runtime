@@ -1,0 +1,1621 @@
+{
+  "ancestors": {
+    "step_1": [],
+    "step_2": [
+      "step_1"
+    ],
+    "step_3": [
+      "step_1"
+    ],
+    "step_4": [
+      "step_1",
+      "step_2",
+      "step_3"
+    ],
+    "step_5": [
+      "step_1",
+      "step_2",
+      "step_3",
+      "step_4"
+    ],
+    "step_6": [
+      "step_1",
+      "step_2",
+      "step_3",
+      "step_4",
+      "step_5"
+    ],
+    "step_7": [
+      "step_1",
+      "step_2",
+      "step_3",
+      "step_4",
+      "step_5",
+      "step_6"
+    ],
+    "step_8": [
+      "step_1",
+      "step_2",
+      "step_3",
+      "step_4",
+      "step_5",
+      "step_6",
+      "step_7"
+    ],
+    "step_9": [
+      "step_1",
+      "step_2",
+      "step_3",
+      "step_4",
+      "step_5",
+      "step_6",
+      "step_7",
+      "step_8"
+    ]
+  },
+  "compiler": "process-runtime.compiler.v1",
+  "inputs": {
+    "audio_asset": {
+      "kind": "artifact"
+    },
+    "duration_ms": {
+      "kind": "integer"
+    },
+    "events_asset": {
+      "kind": "artifact"
+    },
+    "review_id": {
+      "kind": "string"
+    },
+    "reviewed_at": {
+      "kind": "string"
+    },
+    "subject_id": {
+      "kind": "string"
+    },
+    "submitted_by": {
+      "kind": "string"
+    }
+  },
+  "process_id": "personal-review-v1",
+  "roots": [
+    "step_1"
+  ],
+  "schema": "process.compiled.v1",
+  "steps": [
+    {
+      "bindings": {
+        "audio_asset": {
+          "name": "audio_asset",
+          "source": "run_input"
+        },
+        "duration_ms": {
+          "name": "duration_ms",
+          "source": "run_input"
+        },
+        "events_asset": {
+          "name": "events_asset",
+          "source": "run_input"
+        },
+        "review_id": {
+          "name": "review_id",
+          "source": "run_input"
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "source": "run_input"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        },
+        "submitted_by": {
+          "name": "submitted_by",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "review.load_review"
+      ],
+      "depends_on": [],
+      "inputs": {
+        "audio_asset": {
+          "kind": "artifact"
+        },
+        "duration_ms": {
+          "kind": "integer"
+        },
+        "events_asset": {
+          "kind": "artifact"
+        },
+        "review_id": {
+          "kind": "string"
+        },
+        "reviewed_at": {
+          "kind": "string"
+        },
+        "subject_id": {
+          "kind": "string"
+        },
+        "submitted_by": {
+          "kind": "string"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "audio_asset": {
+          "kind": "artifact"
+        },
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        },
+        "review_id_short": {
+          "kind": "string"
+        }
+      },
+      "resources": [
+        "review.audio",
+        "review.events",
+        "review.record",
+        "review.workspace"
+      ],
+      "step_id": "step_1",
+      "title": "Load review record"
+    },
+    {
+      "bindings": {
+        "audio_asset": {
+          "name": "audio_asset",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "events": {
+          "name": "events",
+          "source": "step_output",
+          "step_id": "step_1"
+        }
+      },
+      "capabilities": [
+        "review.transcribe",
+        "transcribe-review-audio"
+      ],
+      "depends_on": [
+        "step_1"
+      ],
+      "inputs": {
+        "audio_asset": {
+          "kind": "artifact"
+        },
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "audio_offset_ms": {
+          "kind": "integer"
+        },
+        "transcript": {
+          "kind": "string"
+        },
+        "words": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "text": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "start_ms",
+              "text"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "resources": [
+        "review.audio",
+        "review.workspace"
+      ],
+      "step_id": "step_2",
+      "title": "Transcribe audio"
+    },
+    {
+      "bindings": {
+        "events": {
+          "name": "events",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "review.resolve_components"
+      ],
+      "depends_on": [
+        "step_1"
+      ],
+      "inputs": {
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        },
+        "subject_id": {
+          "kind": "string"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "component_names": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "aliases": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "resolution_status": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "source": {
+                "kind": "string"
+              },
+              "spatial_hint": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "aliases",
+              "component",
+              "resolution_status",
+              "selectors",
+              "source",
+              "spatial_hint"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "resources": [
+        "review.workspace",
+        "subject.codebase"
+      ],
+      "step_id": "step_3",
+      "title": "Resolve component names"
+    },
+    {
+      "bindings": {
+        "audio_asset": {
+          "name": "audio_asset",
+          "source": "run_input"
+        },
+        "audio_offset_ms": {
+          "name": "audio_offset_ms",
+          "source": "step_output",
+          "step_id": "step_2"
+        },
+        "component_names": {
+          "name": "component_names",
+          "source": "step_output",
+          "step_id": "step_3"
+        },
+        "events": {
+          "name": "events",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "review_id": {
+          "name": "review_id",
+          "source": "run_input"
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "source": "run_input"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        },
+        "submitted_by": {
+          "name": "submitted_by",
+          "source": "run_input"
+        },
+        "transcript": {
+          "name": "transcript",
+          "source": "step_output",
+          "step_id": "step_2"
+        },
+        "words": {
+          "name": "words",
+          "source": "step_output",
+          "step_id": "step_2"
+        }
+      },
+      "capabilities": [
+        "annotate-review-transcript",
+        "review.annotate"
+      ],
+      "depends_on": [
+        "step_2",
+        "step_3"
+      ],
+      "inputs": {
+        "audio_asset": {
+          "kind": "artifact"
+        },
+        "audio_offset_ms": {
+          "kind": "integer"
+        },
+        "component_names": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "aliases": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "resolution_status": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "source": {
+                "kind": "string"
+              },
+              "spatial_hint": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "aliases",
+              "component",
+              "resolution_status",
+              "selectors",
+              "source",
+              "spatial_hint"
+            ]
+          },
+          "kind": "array"
+        },
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        },
+        "review_id": {
+          "kind": "string"
+        },
+        "reviewed_at": {
+          "kind": "string"
+        },
+        "subject_id": {
+          "kind": "string"
+        },
+        "submitted_by": {
+          "kind": "string"
+        },
+        "transcript": {
+          "kind": "string"
+        },
+        "words": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "text": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "start_ms",
+              "text"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "resolved_transcript": {
+          "kind": "string"
+        },
+        "transcript_note": {
+          "kind": "artifact"
+        }
+      },
+      "resources": [
+        "review.workspace",
+        "subject.codebase",
+        "vault.notes"
+      ],
+      "step_id": "step_4",
+      "title": "Annotate transcript"
+    },
+    {
+      "bindings": {
+        "component_names": {
+          "name": "component_names",
+          "source": "step_output",
+          "step_id": "step_3"
+        },
+        "events": {
+          "name": "events",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "resolved_transcript": {
+          "name": "resolved_transcript",
+          "source": "step_output",
+          "step_id": "step_4"
+        },
+        "words": {
+          "name": "words",
+          "source": "step_output",
+          "step_id": "step_2"
+        }
+      },
+      "capabilities": [
+        "extract-review-observations",
+        "review.extract"
+      ],
+      "depends_on": [
+        "step_4"
+      ],
+      "inputs": {
+        "component_names": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "aliases": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "resolution_status": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "source": {
+                "kind": "string"
+              },
+              "spatial_hint": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "aliases",
+              "component",
+              "resolution_status",
+              "selectors",
+              "source",
+              "spatial_hint"
+            ]
+          },
+          "kind": "array"
+        },
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        },
+        "resolved_transcript": {
+          "kind": "string"
+        },
+        "words": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "text": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "start_ms",
+              "text"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "actionability": {
+          "kind": "object",
+          "properties": {
+            "actionable_now": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "design_preference": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "discarded_or_filtered": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "needs_human_clarification": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "non_issue": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            }
+          },
+          "required": [
+            "actionable_now",
+            "design_preference",
+            "discarded_or_filtered",
+            "needs_human_clarification",
+            "non_issue"
+          ]
+        },
+        "filtered_points": {
+          "items": {
+            "kind": "string"
+          },
+          "kind": "array"
+        },
+        "implementation_handoff": {
+          "kind": "object",
+          "properties": {
+            "files_to_inspect_first": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "implementation_tasks": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "non_goals": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "open_questions": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "verification_notes": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            }
+          },
+          "required": [
+            "files_to_inspect_first",
+            "implementation_tasks",
+            "non_goals",
+            "open_questions",
+            "verification_notes"
+          ]
+        },
+        "negative_evidence": {
+          "kind": "object",
+          "properties": {
+            "discarded_events": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "filtered_points": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            },
+            "silent_annotations": {
+              "items": {
+                "kind": "string"
+              },
+              "kind": "array"
+            }
+          },
+          "required": [
+            "discarded_events",
+            "filtered_points",
+            "silent_annotations"
+          ]
+        },
+        "observations": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "component": {
+                "kind": "string"
+              },
+              "evidence": {
+                "kind": "string"
+              },
+              "issue": {
+                "kind": "string"
+              },
+              "match_type": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "type": {
+                "kind": "string"
+              },
+              "what_they_said": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "component",
+              "evidence",
+              "issue",
+              "match_type",
+              "observation_id",
+              "selectors",
+              "type",
+              "what_they_said"
+            ]
+          },
+          "kind": "array"
+        },
+        "review_packet": {
+          "kind": "artifact"
+        },
+        "review_packet_status": {
+          "kind": "string"
+        },
+        "silent_annotations": {
+          "items": {
+            "kind": "string"
+          },
+          "kind": "array"
+        },
+        "target_events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "resources": [
+        "review.workspace",
+        "subject.codebase"
+      ],
+      "step_id": "step_5",
+      "title": "Extract observations"
+    },
+    {
+      "bindings": {
+        "component_names": {
+          "name": "component_names",
+          "source": "step_output",
+          "step_id": "step_3"
+        },
+        "events": {
+          "name": "events",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "filtered_points": {
+          "name": "filtered_points",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "observations": {
+          "name": "observations",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "resolved_transcript": {
+          "name": "resolved_transcript",
+          "source": "step_output",
+          "step_id": "step_4"
+        },
+        "silent_annotations": {
+          "name": "silent_annotations",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        }
+      },
+      "capabilities": [
+        "review.bind_source"
+      ],
+      "depends_on": [
+        "step_5"
+      ],
+      "inputs": {
+        "component_names": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "aliases": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "resolution_status": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "source": {
+                "kind": "string"
+              },
+              "spatial_hint": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "aliases",
+              "component",
+              "resolution_status",
+              "selectors",
+              "source",
+              "spatial_hint"
+            ]
+          },
+          "kind": "array"
+        },
+        "events": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "end_ms": {
+                "kind": "integer"
+              },
+              "event_index": {
+                "kind": "integer"
+              },
+              "kind": {
+                "kind": "string"
+              },
+              "start_ms": {
+                "kind": "integer"
+              },
+              "target": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "end_ms",
+              "event_index",
+              "kind",
+              "start_ms",
+              "target"
+            ]
+          },
+          "kind": "array"
+        },
+        "filtered_points": {
+          "items": {
+            "kind": "string"
+          },
+          "kind": "array"
+        },
+        "observations": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "component": {
+                "kind": "string"
+              },
+              "evidence": {
+                "kind": "string"
+              },
+              "issue": {
+                "kind": "string"
+              },
+              "match_type": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "type": {
+                "kind": "string"
+              },
+              "what_they_said": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "component",
+              "evidence",
+              "issue",
+              "match_type",
+              "observation_id",
+              "selectors",
+              "type",
+              "what_they_said"
+            ]
+          },
+          "kind": "array"
+        },
+        "resolved_transcript": {
+          "kind": "string"
+        },
+        "silent_annotations": {
+          "items": {
+            "kind": "string"
+          },
+          "kind": "array"
+        },
+        "subject_id": {
+          "kind": "string"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "codebase_context": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "caveats": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "confidence": {
+                "kind": "string"
+              },
+              "likely_cause": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "reasoning": {
+                "kind": "string"
+              },
+              "references": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "resolution_status": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "caveats",
+              "component",
+              "confidence",
+              "likely_cause",
+              "observation_id",
+              "reasoning",
+              "references",
+              "resolution_status"
+            ]
+          },
+          "kind": "array"
+        }
+      },
+      "resources": [
+        "review.workspace",
+        "subject.codebase"
+      ],
+      "step_id": "step_6",
+      "title": "Bind feedback to codebase context"
+    },
+    {
+      "bindings": {
+        "codebase_context": {
+          "name": "codebase_context",
+          "source": "step_output",
+          "step_id": "step_6"
+        },
+        "component_names": {
+          "name": "component_names",
+          "source": "step_output",
+          "step_id": "step_3"
+        },
+        "duration_ms": {
+          "name": "duration_ms",
+          "source": "run_input"
+        },
+        "observations": {
+          "name": "observations",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "resolved_transcript": {
+          "name": "resolved_transcript",
+          "source": "step_output",
+          "step_id": "step_4"
+        },
+        "review_id": {
+          "name": "review_id",
+          "source": "run_input"
+        },
+        "review_packet": {
+          "name": "review_packet",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "review_packet_status": {
+          "name": "review_packet_status",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "source": "run_input"
+        },
+        "silent_annotations": {
+          "name": "silent_annotations",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        },
+        "submitted_by": {
+          "name": "submitted_by",
+          "source": "run_input"
+        },
+        "transcript_note": {
+          "name": "transcript_note",
+          "source": "step_output",
+          "step_id": "step_4"
+        }
+      },
+      "capabilities": [
+        "review.write_review"
+      ],
+      "depends_on": [
+        "step_6"
+      ],
+      "inputs": {
+        "codebase_context": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "caveats": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "confidence": {
+                "kind": "string"
+              },
+              "likely_cause": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "reasoning": {
+                "kind": "string"
+              },
+              "references": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "resolution_status": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "caveats",
+              "component",
+              "confidence",
+              "likely_cause",
+              "observation_id",
+              "reasoning",
+              "references",
+              "resolution_status"
+            ]
+          },
+          "kind": "array"
+        },
+        "component_names": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "aliases": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "component": {
+                "kind": "string"
+              },
+              "resolution_status": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "source": {
+                "kind": "string"
+              },
+              "spatial_hint": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "aliases",
+              "component",
+              "resolution_status",
+              "selectors",
+              "source",
+              "spatial_hint"
+            ]
+          },
+          "kind": "array"
+        },
+        "duration_ms": {
+          "kind": "integer"
+        },
+        "observations": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "component": {
+                "kind": "string"
+              },
+              "evidence": {
+                "kind": "string"
+              },
+              "issue": {
+                "kind": "string"
+              },
+              "match_type": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "type": {
+                "kind": "string"
+              },
+              "what_they_said": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "component",
+              "evidence",
+              "issue",
+              "match_type",
+              "observation_id",
+              "selectors",
+              "type",
+              "what_they_said"
+            ]
+          },
+          "kind": "array"
+        },
+        "resolved_transcript": {
+          "kind": "string"
+        },
+        "review_id": {
+          "kind": "string"
+        },
+        "review_packet": {
+          "kind": "artifact"
+        },
+        "review_packet_status": {
+          "kind": "string"
+        },
+        "reviewed_at": {
+          "kind": "string"
+        },
+        "silent_annotations": {
+          "items": {
+            "kind": "string"
+          },
+          "kind": "array"
+        },
+        "subject_id": {
+          "kind": "string"
+        },
+        "submitted_by": {
+          "kind": "string"
+        },
+        "transcript_note": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "review_note": {
+          "kind": "artifact"
+        },
+        "review_packet": {
+          "kind": "artifact"
+        },
+        "review_packet_status": {
+          "kind": "string"
+        }
+      },
+      "resources": [
+        "vault.notes"
+      ],
+      "step_id": "step_7",
+      "title": "Write review document"
+    },
+    {
+      "bindings": {
+        "review_id": {
+          "name": "review_id",
+          "source": "run_input"
+        },
+        "review_note": {
+          "name": "review_note",
+          "source": "step_output",
+          "step_id": "step_7"
+        },
+        "review_packet": {
+          "name": "review_packet",
+          "source": "step_output",
+          "step_id": "step_7"
+        },
+        "review_packet_status": {
+          "name": "review_packet_status",
+          "source": "step_output",
+          "step_id": "step_7"
+        }
+      },
+      "capabilities": [
+        "review.write_status",
+        "update_review_status"
+      ],
+      "depends_on": [
+        "step_7"
+      ],
+      "inputs": {
+        "review_id": {
+          "kind": "string"
+        },
+        "review_note": {
+          "kind": "artifact"
+        },
+        "review_packet": {
+          "kind": "artifact"
+        },
+        "review_packet_status": {
+          "kind": "string"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {
+        "review_status_updated": {
+          "kind": "object",
+          "properties": {
+            "review_id": {
+              "kind": "string"
+            },
+            "review_note": {
+              "kind": "artifact"
+            },
+            "status": {
+              "kind": "string"
+            }
+          },
+          "required": [
+            "review_id",
+            "review_note",
+            "status"
+          ]
+        }
+      },
+      "resources": [
+        "review.status"
+      ],
+      "step_id": "step_8",
+      "title": "Update review status"
+    },
+    {
+      "bindings": {
+        "observations": {
+          "name": "observations",
+          "source": "step_output",
+          "step_id": "step_5"
+        },
+        "review_id": {
+          "name": "review_id",
+          "source": "run_input"
+        },
+        "review_id_short": {
+          "name": "review_id_short",
+          "source": "step_output",
+          "step_id": "step_1"
+        },
+        "review_note": {
+          "name": "review_note",
+          "source": "step_output",
+          "step_id": "step_7"
+        },
+        "review_status_updated": {
+          "name": "review_status_updated",
+          "source": "step_output",
+          "step_id": "step_8"
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "source": "run_input"
+        },
+        "transcript_note": {
+          "name": "transcript_note",
+          "source": "step_output",
+          "step_id": "step_4"
+        }
+      },
+      "capabilities": [
+        "review.daily_note"
+      ],
+      "depends_on": [
+        "step_8"
+      ],
+      "inputs": {
+        "observations": {
+          "items": {
+            "kind": "object",
+            "properties": {
+              "component": {
+                "kind": "string"
+              },
+              "evidence": {
+                "kind": "string"
+              },
+              "issue": {
+                "kind": "string"
+              },
+              "match_type": {
+                "kind": "string"
+              },
+              "observation_id": {
+                "kind": "string"
+              },
+              "selectors": {
+                "items": {
+                  "kind": "string"
+                },
+                "kind": "array"
+              },
+              "type": {
+                "kind": "string"
+              },
+              "what_they_said": {
+                "kind": "string"
+              }
+            },
+            "required": [
+              "component",
+              "evidence",
+              "issue",
+              "match_type",
+              "observation_id",
+              "selectors",
+              "type",
+              "what_they_said"
+            ]
+          },
+          "kind": "array"
+        },
+        "review_id": {
+          "kind": "string"
+        },
+        "review_id_short": {
+          "kind": "string"
+        },
+        "review_note": {
+          "kind": "artifact"
+        },
+        "review_status_updated": {
+          "kind": "object",
+          "properties": {
+            "review_id": {
+              "kind": "string"
+            },
+            "review_note": {
+              "kind": "artifact"
+            },
+            "status": {
+              "kind": "string"
+            }
+          },
+          "required": [
+            "review_id",
+            "review_note",
+            "status"
+          ]
+        },
+        "subject_id": {
+          "kind": "string"
+        },
+        "transcript_note": {
+          "kind": "artifact"
+        }
+      },
+      "max_attempts": 2,
+      "outputs": {},
+      "resources": [
+        "review.status",
+        "vault.daily-note"
+      ],
+      "step_id": "step_9",
+      "title": "Log in daily note"
+    }
+  ],
+  "title": "Process queued personal review",
+  "topological_order": [
+    "step_1",
+    "step_2",
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_7",
+    "step_8",
+    "step_9"
+  ]
+}

@@ -1,0 +1,5 @@
+# Python 3.12.12; unittest is provided by the interpreter.
+# Direct PEP 517 backend invocation needs no unpinned frontend or wheel package.
+setuptools==84.0.0
+jsonschema==4.26.0
+pip==25.3

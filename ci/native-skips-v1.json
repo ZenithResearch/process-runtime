@@ -1,0 +1,158 @@
+{
+  "schema": "runtime.ci-native-skips.v1",
+  "tests": [
+    {
+      "id": "test_authority.NativeSecSAuthorityTests.test_any_signature_packet_or_request_substitution_is_rejected",
+      "reason": "Build the pinned verification-only Rust helper and set PROCESS_RUNTIME_NATIVE_VERIFIER",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_authority.NativeSecSAuthorityTests.test_key_revocation_expiry_audience_and_descriptor_changes_are_current",
+      "reason": "Build the pinned verification-only Rust helper and set PROCESS_RUNTIME_NATIVE_VERIFIER",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_authority.NativeSecSAuthorityTests.test_native_command_and_query_signatures_verify_with_exact_packet_binding",
+      "reason": "Build the pinned verification-only Rust helper and set PROCESS_RUNTIME_NATIVE_VERIFIER",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_authority.NativeSecSAuthorityTests.test_policy_reloaded_each_call_and_native_binary_hash_is_pinned",
+      "reason": "Build the pinned verification-only Rust helper and set PROCESS_RUNTIME_NATIVE_VERIFIER",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_authority.NativeSecSAuthorityTests.test_signed_wrong_operation_resource_and_opcode_are_rejected_by_receiver",
+      "reason": "Build the pinned verification-only Rust helper and set PROCESS_RUNTIME_NATIVE_VERIFIER",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.InstalledReceiverCLITests.test_configured_verification_remains_unqualified_and_admission_is_preserved",
+      "reason": "Fresh synthetic public native fixtures and explicit helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_FRESH_NATIVE_FIXTURES"
+      ]
+    },
+    {
+      "id": "test_receiver_config.InstalledReceiverCLITests.test_installed_cli_native_command_query_exact_retry_replay_and_revocation",
+      "reason": "Fresh synthetic public native fixtures and explicit helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_FRESH_NATIVE_FIXTURES"
+      ]
+    },
+    {
+      "id": "test_receiver_config.InstalledReceiverCLITests.test_wrong_native_bindings_and_delivery_identity_cannot_authorize",
+      "reason": "Fresh synthetic public native fixtures and explicit helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_FRESH_NATIVE_FIXTURES"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_binary_tampering_or_permission_change_disables_verification",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_cli_rejects_unsafe_configuration_before_database_creation_and_redacts",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_configuration_unknown_fields_relative_paths_hashes_and_flags_fail_closed",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_duplicate_nonfinite_unknown_and_unbounded_policy_fields_fail_closed",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_pinned_native_public_fixture_verifies_but_never_claims_qualification",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_policy_reload_revocation_deny_and_descriptor_mismatch_reject",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_policy_revocation_during_native_verification_denies_before_return",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_receiver_permission_and_verifier_key_time_bounds_survive_native_latency",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_shared_symlink_hardlink_or_missing_policy_and_config_are_rejected",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_receiver_config.ReceiverConfigurationTests.test_untrusted_ancestor_directory_and_alias_path_are_rejected",
+      "reason": "Explicit pinned native helper required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER"
+      ]
+    },
+    {
+      "id": "test_transport_budget.NativeTransportBudgetTests.test_full_native_signature_receiver_via_sdk_and_http",
+      "reason": "Explicit candidate native helper/fixtures required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_TRANSPORT_FIXTURES"
+      ]
+    },
+    {
+      "id": "test_transport_budget.NativeTransportBudgetTests.test_maximum_native_handoff_mutates_isolated_runtime_and_exact_retry_once",
+      "reason": "Explicit candidate native helper/fixtures required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_TRANSPORT_FIXTURES"
+      ]
+    },
+    {
+      "id": "test_transport_budget.NativeTransportBudgetTests.test_native_stdio_and_metadata_bounds_deny",
+      "reason": "Explicit candidate native helper/fixtures required",
+      "requires": [
+        "PROCESS_RUNTIME_NATIVE_VERIFIER",
+        "PROCESS_RUNTIME_TRANSPORT_FIXTURES"
+      ]
+    }
+  ]
+}

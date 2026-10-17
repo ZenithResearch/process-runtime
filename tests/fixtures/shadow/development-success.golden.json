@@ -1,0 +1,219 @@
+{
+  "authority_mode": "local_dev_untrusted",
+  "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+  "external_effects": "forbidden",
+  "failures": [],
+  "final_step_states": {
+    "contract-tests": "succeeded",
+    "implement": "succeeded",
+    "package": "succeeded",
+    "review": "succeeded",
+    "scope": "succeeded",
+    "unit-tests": "succeeded"
+  },
+  "process_id": "development-sop-v1",
+  "run_state": "succeeded",
+  "runnable_trace": [
+    {
+      "round": 0,
+      "runnable": [
+        "scope"
+      ]
+    },
+    {
+      "round": 1,
+      "runnable": [
+        "implement"
+      ]
+    },
+    {
+      "round": 2,
+      "runnable": [
+        "contract-tests",
+        "unit-tests"
+      ]
+    },
+    {
+      "round": 3,
+      "runnable": [
+        "review"
+      ]
+    },
+    {
+      "round": 4,
+      "runnable": [
+        "package"
+      ]
+    },
+    {
+      "round": 5,
+      "runnable": []
+    }
+  ],
+  "scenario_id": "development-success",
+  "schema": "runtime.shadow-report.v1",
+  "steps": [
+    {
+      "input_digest": "e4f3419c2a9660cf77da1752df36f047e0dc7744620d0ee517ec329d11529930",
+      "outcome": "succeeded",
+      "output_digest": "e6d0f87cb77c108e84b7511efe5bb4e2989271e6e14940a90c94906de8ea1b7a",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-scope-1",
+        "fence": 1,
+        "input_digest": "e4f3419c2a9660cf77da1752df36f047e0dc7744620d0ee517ec329d11529930",
+        "outcome": "succeeded",
+        "output_digest": "e6d0f87cb77c108e84b7511efe5bb4e2989271e6e14940a90c94906de8ea1b7a",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-scope-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "scope"
+      },
+      "receipt_digest": "2e7863dd8f5bb2191df56a6e7d7658890a0d5e0aa33d04d50116d7330892b806",
+      "step_id": "scope"
+    },
+    {
+      "input_digest": "c5b4622ee7db0beb0c47b873837671227f6c6bb6f5be57945313dd0dbe97dbe5",
+      "outcome": "succeeded",
+      "output_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-implement-1",
+        "fence": 1,
+        "input_digest": "c5b4622ee7db0beb0c47b873837671227f6c6bb6f5be57945313dd0dbe97dbe5",
+        "outcome": "succeeded",
+        "output_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-implement-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "implement"
+      },
+      "receipt_digest": "372d8e9ace1e5933f4ce20709d5a85365e946317fc98f745113c2154f199a461",
+      "step_id": "implement"
+    },
+    {
+      "input_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+      "outcome": "succeeded",
+      "output_digest": "e45c6bdce3ef754d3d63142e37f77cf19a65c65f1e6bc6bc7ce5b395932aa35c",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-contract-tests-1",
+        "fence": 1,
+        "input_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+        "outcome": "succeeded",
+        "output_digest": "e45c6bdce3ef754d3d63142e37f77cf19a65c65f1e6bc6bc7ce5b395932aa35c",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-contract-tests-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "contract-tests"
+      },
+      "receipt_digest": "38a0ddf1649e1724d1c72f10ee1f39b64af51806a711d3fd091d720cabdc2a9d",
+      "step_id": "contract-tests"
+    },
+    {
+      "input_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+      "outcome": "succeeded",
+      "output_digest": "fe1bf2028c1e49b9d4b9e8c8f84773245cba42a1941917862e1c5b4fa667181a",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-unit-tests-1",
+        "fence": 1,
+        "input_digest": "6067ffc9c4dda3f0503d774eb83ceb9b322cb7a3dfff5b4d185bce85bf88f9e3",
+        "outcome": "succeeded",
+        "output_digest": "fe1bf2028c1e49b9d4b9e8c8f84773245cba42a1941917862e1c5b4fa667181a",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-unit-tests-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "unit-tests"
+      },
+      "receipt_digest": "2501ab968dab0d031f8415117f51bc461dd41b20ae60efada273a85206fad289",
+      "step_id": "unit-tests"
+    },
+    {
+      "input_digest": "0d987c3d9abd9a35ac29c299f0359c16a6024d1c9dfd2b29eb1093029529f49f",
+      "outcome": "succeeded",
+      "output_digest": "309b0537c466902f2c6644479c59287e886dfbf127916920119257fbc2d46559",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-review-1",
+        "fence": 1,
+        "input_digest": "0d987c3d9abd9a35ac29c299f0359c16a6024d1c9dfd2b29eb1093029529f49f",
+        "outcome": "succeeded",
+        "output_digest": "309b0537c466902f2c6644479c59287e886dfbf127916920119257fbc2d46559",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-review-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "review"
+      },
+      "receipt_digest": "1bb137792c257b2e3935d03859e214720cbf3179760bdcbee0d9d65dc1636d67",
+      "step_id": "review"
+    },
+    {
+      "input_digest": "9be8a1e59f607fd35fb18e083f536b2cb8a07bb8589b6dcc523eb3ea92caca23",
+      "outcome": "succeeded",
+      "output_digest": "4b6c841abf633ef6813ba74920b32147b6b3752b7e72a9f3cf4a021a660c9379",
+      "receipt": {
+        "actor_id": "shadow-worker",
+        "attempt_id": "shadow-attempt-package-1",
+        "fence": 1,
+        "input_digest": "9be8a1e59f607fd35fb18e083f536b2cb8a07bb8589b6dcc523eb3ea92caca23",
+        "outcome": "succeeded",
+        "output_digest": "4b6c841abf633ef6813ba74920b32147b6b3752b7e72a9f3cf4a021a660c9379",
+        "pin": {
+          "compilation_hash": "f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4d3bab769539ce711",
+          "process_id": "development-sop-v1",
+          "process_version": "shadow-version-f0fff8e5f98ab2132632b1f810af130d6a0c2b8ad29e08d4"
+        },
+        "receipt_id": "receipt-shadow-attempt-package-1",
+        "recorded_at_ms": 1700000000000,
+        "run_id": "shadow-development-success",
+        "schema": "runtime.receipt.v1",
+        "signature": null,
+        "started_at_ms": 1700000000000,
+        "step_id": "package"
+      },
+      "receipt_digest": "39a390389b18b8bba8b41a2570c6126e05f59a235aaa8ce4c1889ab561b573c0",
+      "step_id": "package"
+    }
+  ]
+}
