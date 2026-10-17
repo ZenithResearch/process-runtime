@@ -148,7 +148,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 [[package]]
 name = "castalia-wallet-devgraph-presentation"
 version = "0.1.0"
-source = "git+https://github.com/bananawalnut/castalia-wallet.git?rev=3216144e8df04582e921810462845efc8c2cf390#3216144e8df04582e921810462845efc8c2cf390"
+source = "git+https://github.com/ZenithResearch/castalia-wallet?rev=c6e3007216e90a99ffb7b7cb1b34a9f7c29e1a1f#c6e3007216e90a99ffb7b7cb1b34a9f7c29e1a1f"
 dependencies = [
  "base64",
  "devgraph-work-protocol",

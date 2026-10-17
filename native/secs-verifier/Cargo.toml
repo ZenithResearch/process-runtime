@@ -13,3 +13,6 @@ serde_json = "=1.0.150"
 ed25519-dalek = "=2.2.0"
 sha2 = "=0.11.0"
 hex = "=0.4.3"
+
+[patch."https://github.com/bananawalnut/castalia-wallet.git"]
+castalia-wallet-devgraph-presentation = { git = "https://github.com/ZenithResearch/castalia-wallet", rev = "c6e3007216e90a99ffb7b7cb1b34a9f7c29e1a1f" }
