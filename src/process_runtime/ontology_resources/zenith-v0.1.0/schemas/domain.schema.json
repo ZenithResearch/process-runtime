@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zenith-research.ca/ontology/normalized/v0.1.0/schemas/domain.schema.json",
+  "title": "Domain",
+  "description": "A publisher-scoped subject area. Canonical vocabulary references, when present, must be unique across the domain registry.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:",
+      "description": "Stable logical identity of this domain."
+    },
+    "type": {
+      "const": "zn:Domain"
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Qualified key used by publisher and domain views."
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Publisher key that qualifies the domain."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceModuleRef": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:",
+      "description": "Optional IRI for the specific source module."
+    },
+    "vocabularyRef": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:",
+      "description": "Optional canonical vocabulary IRI. When present, only one Domain can claim it."
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "key",
+    "publisher",
+    "label",
+    "scope"
+  ],
+  "additionalProperties": false
+}

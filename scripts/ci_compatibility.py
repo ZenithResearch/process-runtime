@@ -121,7 +121,7 @@ class Guard(importlib.abc.MetaPathFinder):
    return spec
 sys.meta_path.insert(0,Guard())
 suite=unittest.TestSuite()
-for pattern in ('test_contracts.py','test_public_client_contract.py','test_http_client.py'):
+for pattern in ('test_contracts.py','test_public_client_contract.py','test_http_client.py','test_ontology.py'):
  suite.addTests(unittest.defaultTestLoader.discover(str(stage/'tests'),pattern=pattern))
 result=unittest.TextTestRunner(verbosity=2).run(suite)
 origins={name:str(Path(module.__file__).resolve()) for name,module in sys.modules.items() if component(name) and getattr(module,'__file__',None)}

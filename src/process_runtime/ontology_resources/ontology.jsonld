@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "runtime": "https://zenith-research.ca/ontology/process-runtime/terms/",
+    "zn": "https://zenith-research.ca/ontology/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "versionIRI": {
+      "@id": "owl:versionIRI",
+      "@type": "@id"
+    },
+    "versionInfo": "owl:versionInfo",
+    "imports": {
+      "@id": "owl:imports",
+      "@type": "@id"
+    },
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://zenith-research.ca/ontology/process-runtime",
+      "@type": "owl:Ontology",
+      "label": "Process Runtime ontology",
+      "comment": "Repository-owned execution vocabulary importing normalized Zenith Core and Messaging.",
+      "versionIRI": "https://zenith-research.ca/ontology/process-runtime/v0.1.0/ontology.jsonld",
+      "versionInfo": "0.1.0",
+      "imports": [
+        "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/core.jsonld",
+        "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/messaging.jsonld"
+      ]
+    },
+    {
+      "@id": "runtime:ProcessDefinition",
+      "@type": "owl:Class",
+      "label": "ProcessDefinition",
+      "comment": "The machine-readable authoring definition of a reusable procedure, carrying draft and source provenance.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "runtime:ProcessVersion",
+      "@type": "owl:Class",
+      "label": "ProcessVersion",
+      "comment": "An immutable published snapshot of a Runtime process definition, with compiled content and its own identity.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "runtime:ProcessRun",
+      "@type": "owl:Class",
+      "label": "ProcessRun",
+      "comment": "One execution of an exactly pinned published process version.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "runtime:StepRun",
+      "@type": "owl:Class",
+      "label": "StepRun",
+      "comment": "The execution of one declared step within a ProcessRun, with its own state across retries.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "runtime:Attempt",
+      "@type": "owl:Class",
+      "label": "Attempt",
+      "comment": "One try at a StepRun, with an executor, input snapshot, and outcome.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "runtime:Lease",
+      "@type": "owl:Class",
+      "label": "Lease",
+      "comment": "A time-limited claim bound to an Attempt, actor and fence.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "runtime:ActorRegistration",
+      "@type": "owl:Class",
+      "label": "ActorRegistration",
+      "comment": "A Runtime registration record binding a verified subject to a registered actor ID and advertised capabilities and resources.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "runtime:OutputCommit",
+      "@type": "owl:Class",
+      "label": "OutputCommit",
+      "comment": "An immutable record containing the typed outputs committed by a specific successful Attempt.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "runtime:Receipt",
+      "@type": "owl:Class",
+      "label": "Receipt",
+      "comment": "An identifiable, immutable Runtime record reporting the terminal outcome of one Attempt and binding it to the exact process pin, actor, fence and relevant digests.",
+      "subClassOf": "zn:Receipt"
+    },
+    {
+      "@id": "runtime:RuntimeEffect",
+      "@type": "owl:Class",
+      "label": "RuntimeEffect",
+      "comment": "An identified obligation to perform an external effect for an Attempt, tracked from intent through the observed or reconciled outcome.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "runtime:Event",
+      "@type": "owl:Class",
+      "label": "Event",
+      "comment": "An identifiable happening or change in the Process Runtime domain, such as publication of a process version, creation of a run, or expiry of an attempt.",
+      "subClassOf": "zn:Event"
+    },
+    {
+      "@id": "runtime:versionOf",
+      "@type": "owl:ObjectProperty",
+      "label": "version of",
+      "comment": "Relates an immutable published process snapshot to its authored ProcessDefinition.",
+      "domain": "runtime:ProcessVersion",
+      "range": "runtime:ProcessDefinition"
+    },
+    {
+      "@id": "runtime:executesVersion",
+      "@type": "owl:ObjectProperty",
+      "label": "executes version",
+      "comment": "Relates a ProcessRun to the exact immutable ProcessVersion selected by its complete ProcessPin.",
+      "domain": "runtime:ProcessRun",
+      "range": "runtime:ProcessVersion"
+    },
+    {
+      "@id": "https://zenith-research.ca/ontology/process-runtime/domains/process-runtime",
+      "@type": [
+        "owl:NamedIndividual",
+        "zn:Domain"
+      ],
+      "label": "Process Runtime",
+      "rdfs:seeAlso": {
+        "@id": "https://zenith-research.ca/ontology/process-runtime/v0.1.0/ontology.jsonld"
+      }
+    }
+  ]
+}

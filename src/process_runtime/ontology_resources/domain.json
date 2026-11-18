@@ -1,0 +1,10 @@
+{
+  "id": "https://zenith-research.ca/ontology/process-runtime/domains/process-runtime",
+  "type": "zn:Domain",
+  "key": "runtime/process-runtime",
+  "publisher": "runtime",
+  "label": "Process Runtime",
+  "scope": "Reusable process definitions, immutable published versions, execution and attempt lifecycles, and execution evidence.",
+  "sourceModuleRef": "https://zenith-research.ca/ontology/process-runtime/v0.1.0/ontology.jsonld",
+  "vocabularyRef": "https://zenith-research.ca/ontology/process-runtime"
+}

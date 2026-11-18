@@ -1,0 +1,76 @@
+{
+  "@context": {
+    "zn": "https://zenith-research.ca/ontology/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "versionIRI": {
+      "@id": "owl:versionIRI",
+      "@type": "@id"
+    },
+    "versionInfo": "owl:versionInfo",
+    "canonicalAuthority": {
+      "@id": "zn:canonicalAuthority",
+      "@type": "@id"
+    },
+    "semanticOperation": {
+      "@id": "zn:semanticOperation",
+      "@type": "@id"
+    },
+    "equivalentClass": {
+      "@id": "owl:equivalentClass",
+      "@type": "@id"
+    },
+    "imports": {
+      "@id": "owl:imports",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://zenith-research.ca/ontology/normalized/modules/messaging",
+      "@type": "owl:Ontology",
+      "versionIRI": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/messaging.jsonld",
+      "versionInfo": "0.1.0",
+      "imports": [
+        "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/core.jsonld"
+      ]
+    },
+    {
+      "@id": "zn:Outbox",
+      "@type": "owl:Class",
+      "label": "Outbox",
+      "comment": "An identifiable logical collection that retains outbound messages, payloads or references and tracks their delivery state. It retains its identity as entries arrive or leave, including when empty. Entries and delivery attempts remain schema structures.",
+      "subClassOf": "zn:Collection"
+    },
+    {
+      "@id": "zn:EncryptedOutbox",
+      "@type": "owl:Class",
+      "label": "EncryptedOutbox",
+      "comment": "An Outbox whose retained outbound payloads are encrypted. This does not require all metadata to be encrypted and does not imply application admission or completion from transport retention.",
+      "subClassOf": "zn:Outbox"
+    },
+    {
+      "@id": "zn:Inbox",
+      "@type": "owl:Class",
+      "label": "Inbox",
+      "comment": "An identifiable logical collection maintained by a receiver to retain inbound messages, references or intake records and track their handling, including after processing.",
+      "subClassOf": "zn:Collection"
+    }
+  ]
+}
