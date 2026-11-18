@@ -59,7 +59,7 @@ class OntologyTests(unittest.TestCase):
         self.assertEqual(mappings["ArtifactRef"]["disposition"], "reference")
         self.assertEqual(mappings["ArtifactRef"]["refersTo"], "zn:Artifact")
         self.assertFalse({"runtime:Artifact", "runtime:RuntimeInbox", "runtime:RuntimeOutbox"}
-                         & set(EXPECTED_PARENTS))
+                         & {entry["id"] for entry in sources["classes"]})
 
     def test_every_existing_runtime_term_and_stored_kind_has_a_disposition(self):
         ownership = json.loads((ROOT / "contracts/ownership-v1.json").read_text())
