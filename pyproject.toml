@@ -13,6 +13,7 @@ dependencies = ["jsonschema>=4.25,<5"]
 where = ["src"]
 
 [tool.setuptools.package-data]
+process_runtime = ["ontology_resources/*.json", "ontology_resources/*.jsonld", "ontology_resources/zenith-v0.1.0/*.json", "ontology_resources/zenith-v0.1.0/modules/*.jsonld", "ontology_resources/zenith-v0.1.0/schemas/*.json"]
 process_runtime_client = ["*.json", "py.typed"]
 
 [tool.setuptools.data-files]

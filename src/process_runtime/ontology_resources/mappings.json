@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "process-runtime.ontology-mappings.v1",
+  "ontologyVersion": "0.1.0",
+  "sourceWireSchema": "urn:zenith:process-runtime:v1",
+  "previousReviewNamespace": "urn:zenith:process-runtime:ontology:review#",
+  "terms": {
+    "ProcessDefinition": {
+      "disposition": "class",
+      "class": "runtime:ProcessDefinition",
+      "recordKind": "process_definition",
+      "identityFields": [
+        "process_id"
+      ]
+    },
+    "ProcessVersion": {
+      "disposition": "class",
+      "class": "runtime:ProcessVersion",
+      "recordKind": "process_version",
+      "identityFields": [
+        "pin.process_version"
+      ]
+    },
+    "ProcessRun": {
+      "disposition": "class",
+      "class": "runtime:ProcessRun",
+      "recordKind": "process_run",
+      "identityFields": [
+        "run_id"
+      ]
+    },
+    "StepRun": {
+      "disposition": "class",
+      "class": "runtime:StepRun",
+      "recordKind": "step_run",
+      "identityFields": [
+        "run_id",
+        "step_id"
+      ]
+    },
+    "Attempt": {
+      "disposition": "class",
+      "class": "runtime:Attempt",
+      "recordKind": "attempt",
+      "identityFields": [
+        "attempt_id"
+      ]
+    },
+    "Lease": {
+      "disposition": "class",
+      "class": "runtime:Lease",
+      "recordKind": "lease",
+      "identityFields": [
+        "attempt_id"
+      ]
+    },
+    "ActorRegistration": {
+      "disposition": "class",
+      "class": "runtime:ActorRegistration",
+      "recordKind": "actor_registration",
+      "identityFields": [
+        "actor_id"
+      ],
+      "meaning": "The verified subject and optional directory_ref are separate bindings. Shared Entity mapping requires an explicit identity resolution."
+    },
+    "OutputCommit": {
+      "disposition": "class",
+      "class": "runtime:OutputCommit",
+      "recordKind": "output_commit",
+      "identityFields": [
+        "output_id"
+      ]
+    },
+    "Receipt": {
+      "disposition": "class",
+      "class": "runtime:Receipt",
+      "recordKind": "receipt",
+      "identityFields": [
+        "receipt_id"
+      ],
+      "schemaRef": "urn:zenith:process-runtime:v1#/$defs/receipt",
+      "meaning": "An unsigned terminal Attempt outcome record. The schema retains the exact pin, actor, fence and digests."
+    },
+    "RuntimeEffect": {
+      "disposition": "class",
+      "class": "runtime:RuntimeEffect",
+      "recordKind": "external_effect",
+      "identityFields": [
+        "effect_id"
+      ]
+    },
+    "Artifact": {
+      "disposition": "shared",
+      "class": "zn:Artifact",
+      "recordKind": "artifact",
+      "appliesTo": "referenced-artifact",
+      "meaning": "The identified retained content. Runtime metadata and ArtifactRef values describe or identify it.",
+      "sourceQuery": "artifact.get",
+      "referenceTerm": "ArtifactRef"
+    },
+    "RuntimeInbox": {
+      "disposition": "shared-collection",
+      "class": "zn:Inbox",
+      "recordKind": "inbox",
+      "appliesTo": "logical-collection",
+      "entryMeaning": "Runtime-owned entry schema. Each stored row is an entry in the logical collection."
+    },
+    "RuntimeOutbox": {
+      "disposition": "shared-collection",
+      "class": "zn:Outbox",
+      "recordKind": "outbox",
+      "appliesTo": "logical-collection",
+      "entryMeaning": "Runtime-owned entry schema. Each stored row is an entry in the logical collection."
+    },
+    "CompiledProcess": {
+      "disposition": "structure",
+      "containedBy": "runtime:ProcessVersion",
+      "meaning": "The complete compiled representation and compilation hash retained by the version."
+    },
+    "Actor": {
+      "disposition": "structure",
+      "meaning": "Capability/resource value used by scheduling. ActorRegistration describes the registered actor and its verified subject."
+    },
+    "ProcessPin": {
+      "disposition": "reference",
+      "refersTo": "runtime:ProcessVersion",
+      "schemaRef": "urn:zenith:process-runtime:v1#/$defs/pin",
+      "identityFields": [
+        "process_id",
+        "process_version",
+        "compilation_hash"
+      ]
+    },
+    "ArtifactRef": {
+      "disposition": "reference",
+      "refersTo": "zn:Artifact",
+      "schemaRef": "urn:zenith:process-runtime:v1#/$defs/artifact",
+      "identityFields": [
+        "content_hash",
+        "byte_length",
+        "media_type"
+      ]
+    },
+    "RuntimeEvent": {
+      "disposition": "description",
+      "describes": "runtime:Event",
+      "schemaRef": "urn:zenith:process-runtime:v1#/$defs/event",
+      "meaning": "The stream envelope describes an occurrence. recorded_at_ms is recording time. Sequence, kind and summary belong to the application schema."
+    },
+    "AttemptSpan": {
+      "disposition": "derived",
+      "describes": "runtime:Attempt",
+      "meaning": "Derived query view of an existing Attempt and its terminal receipt."
+    }
+  },
+  "relationships": [
+    {
+      "property": "runtime:versionOf",
+      "from": "runtime:ProcessVersion",
+      "to": "runtime:ProcessDefinition",
+      "sourceFields": [
+        "pin.process_id"
+      ],
+      "targetFields": [
+        "process_id"
+      ]
+    },
+    {
+      "property": "runtime:executesVersion",
+      "from": "runtime:ProcessRun",
+      "to": "runtime:ProcessVersion",
+      "sourceFields": [
+        "pin.process_id",
+        "pin.process_version",
+        "pin.compilation_hash"
+      ],
+      "targetFields": [
+        "pin.process_id",
+        "pin.process_version",
+        "pin.compilation_hash"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "@context": {
+    "zn": "https://zenith-research.ca/ontology/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "versionIRI": {
+      "@id": "owl:versionIRI",
+      "@type": "@id"
+    },
+    "versionInfo": "owl:versionInfo",
+    "canonicalAuthority": {
+      "@id": "zn:canonicalAuthority",
+      "@type": "@id"
+    },
+    "semanticOperation": {
+      "@id": "zn:semanticOperation",
+      "@type": "@id"
+    },
+    "equivalentClass": {
+      "@id": "owl:equivalentClass",
+      "@type": "@id"
+    },
+    "imports": {
+      "@id": "owl:imports",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://zenith-research.ca/ontology/normalized/modules/core",
+      "@type": "owl:Ontology",
+      "versionIRI": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/core.jsonld",
+      "versionInfo": "0.1.0"
+    },
+    {
+      "@id": "zn:Entity",
+      "@type": "owl:Class",
+      "label": "Entity",
+      "comment": "Common directory and provenance identity for a person, agent, organization, or other named participant in work; not an authentication Subject or credential.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:Person",
+      "@type": "owl:Class",
+      "label": "Person",
+      "comment": "Human entity.",
+      "subClassOf": "zn:Entity"
+    },
+    {
+      "@id": "zn:Organization",
+      "@type": "owl:Class",
+      "label": "Organization",
+      "comment": "Collective entity such as a company, project, institution, or working group.",
+      "subClassOf": "zn:Entity"
+    },
+    {
+      "@id": "zn:Agent",
+      "@type": "owl:Class",
+      "label": "Agent",
+      "comment": "Software, AI, service, or other automated entity.",
+      "subClassOf": "zn:Entity"
+    },
+    {
+      "@id": "zn:Artifact",
+      "@type": "owl:Class",
+      "label": "Artifact",
+      "comment": "Evidence or output object.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:ExternalLink",
+      "@type": "owl:Class",
+      "label": "External Link",
+      "comment": "Reference to an external URL or system object without ownership semantics.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:Receipt",
+      "@type": "owl:Class",
+      "label": "Receipt",
+      "comment": "An identifiable record of an issuer’s acknowledgement or reported outcome for a specific action or event.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "zn:Event",
+      "@type": "owl:Class",
+      "label": "Event",
+      "comment": "An identifiable happening or change. Its records, delivery messages, and acknowledgements are separate from the happening itself.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:Domain",
+      "@type": "owl:Class",
+      "label": "Domain",
+      "comment": "An identifiable subject area governed by a publisher, with a defined scope and optional source module and canonical vocabulary references.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:Collection",
+      "@type": "owl:Class",
+      "label": "Collection",
+      "comment": "An identified collection whose membership may change, including becoming empty, while the collection retains its identity.",
+      "subClassOf": "owl:Thing"
+    },
+    {
+      "@id": "zn:Handoff",
+      "@type": "owl:Class",
+      "label": "Handoff",
+      "comment": "An identifiable package of context for transfer across entities or sessions.",
+      "subClassOf": "zn:Artifact"
+    },
+    {
+      "@id": "zn:Actor",
+      "@type": "owl:Class",
+      "label": "Actor",
+      "comment": "Directory class name published in v0.4.0, equivalent to Entity. Entity is preferred in v0.5.0; this identifier remains readable and does not denote an authentication Subject or credential.",
+      "equivalentClass": "zn:Entity"
+    },
+    {
+      "@id": "zn:HAS_ARTIFACT",
+      "@type": "owl:ObjectProperty",
+      "label": "has artifact"
+    },
+    {
+      "@id": "zn:HAS_EXTERNAL_LINK",
+      "@type": "owl:ObjectProperty",
+      "label": "has external link"
+    },
+    {
+      "@id": "zn:MEMBER_OF",
+      "@type": "owl:ObjectProperty",
+      "label": "member of",
+      "comment": "Directory membership that does not grant authority."
+    },
+    {
+      "@id": "zn:OPERATED_BY",
+      "@type": "owl:ObjectProperty",
+      "label": "operated by",
+      "comment": "Operational responsibility for an Agent, including an Agent delegation chain; not credential delegation."
+    },
+    {
+      "@id": "zn:ASSIGNED_TO",
+      "@type": "owl:ObjectProperty",
+      "label": "assigned to",
+      "comment": "Work assignment that does not authorize a mutation."
+    },
+    {
+      "@id": "zn:OWNED_BY",
+      "@type": "owl:ObjectProperty",
+      "label": "owned by",
+      "comment": "Accountable work stewardship; not data or credential ownership."
+    },
+    {
+      "@id": "zn:ATTRIBUTED_TO",
+      "@type": "owl:ObjectProperty",
+      "label": "attributed to",
+      "comment": "Directory-level provenance attribution; not cryptographic proof by itself."
+    },
+    {
+      "@id": "zn:HAS_HANDOFF",
+      "@type": "owl:ObjectProperty",
+      "label": "has handoff"
+    },
+    {
+      "@id": "zn:sourceModuleRef",
+      "@type": "owl:ObjectProperty",
+      "label": "sourceModuleRef",
+      "domain": "zn:Domain"
+    },
+    {
+      "@id": "zn:vocabularyRef",
+      "@type": "owl:ObjectProperty",
+      "label": "vocabularyRef",
+      "domain": "zn:Domain"
+    }
+  ]
+}

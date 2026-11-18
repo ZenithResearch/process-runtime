@@ -50,3 +50,11 @@ for the shared Apple-silicon Mac installer and operator UI. Component source liv
 under [ZenithResearch](https://github.com/ZenithResearch). Installation does not
 provision native identities, grant command authority, or enable external effects.
 See `NOTICE.public-baseline.md` for the scope of this clean publication.
+
+## Normalized Zenith ontology
+
+Process Runtime includes a proposed application-owned ontology importing normalized
+Zenith 0.1.0 Core and Messaging. It declares the reviewed Runtime inheritance and
+provides mappings for all existing record and reference types. Inspect it offline
+with `python -I -m process_runtime.ontology --format sources-v1`. See
+[the module, schema mappings and release follow-up](docs/ontology.md).

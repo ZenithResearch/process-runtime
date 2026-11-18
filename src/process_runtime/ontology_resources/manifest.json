@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "process-runtime.ontology-module.v1",
+  "ontologyId": "https://zenith-research.ca/ontology/process-runtime",
+  "version": "0.1.0",
+  "versionIri": "https://zenith-research.ca/ontology/process-runtime/v0.1.0/ontology.jsonld",
+  "namespace": "https://zenith-research.ca/ontology/process-runtime/terms/",
+  "status": "proposed",
+  "authority": "https://github.com/ZenithResearch/process-runtime",
+  "parents": {
+    "runtime:ProcessDefinition": "zn:Artifact",
+    "runtime:ProcessVersion": "zn:Artifact",
+    "runtime:ProcessRun": "owl:Thing",
+    "runtime:StepRun": "owl:Thing",
+    "runtime:Attempt": "owl:Thing",
+    "runtime:Lease": "owl:Thing",
+    "runtime:ActorRegistration": "zn:Artifact",
+    "runtime:OutputCommit": "zn:Artifact",
+    "runtime:Receipt": "zn:Receipt",
+    "runtime:RuntimeEffect": "owl:Thing",
+    "runtime:Event": "zn:Event"
+  },
+  "ontologyDocuments": [
+    "ontology.jsonld",
+    "zenith-v0.1.0/modules/core.jsonld",
+    "zenith-v0.1.0/modules/messaging.jsonld"
+  ],
+  "adoptedZenith": {
+    "version": "0.1.0",
+    "gitCommit": "4a5e54d744c0b1ed0e4dc5750ad98eb52dd11bc2",
+    "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/ontology.jsonld",
+    "bundleDigest": "b1c55be54239e91eeff2548a21025985ae384632bd2037436189e0e0e74d16f9",
+    "manifestSha256": "d73a66b7f780b8ebc1ec1ac1f7d3791eec91a0259dca90faf37927636ad08a4a",
+    "archiveSha256": "6ab9289cad7d811d0cdb2078a6261a538fbd77dbfa53db144e686bc7feafe91d",
+    "vendoredFiles": [
+      "modules/core.jsonld",
+      "modules/messaging.jsonld",
+      "schemas/domain.schema.json"
+    ]
+  },
+  "files": [
+    {
+      "path": "domain.json",
+      "bytes": 510,
+      "sha256": "593b959a779c64a7830bea932f7fb9c777a9a228ba0205df6d19111acd2d5625"
+    },
+    {
+      "path": "mappings.json",
+      "bytes": 5479,
+      "sha256": "77d64424b4f6c5600c32b45f9a04a787af52a7524dea8147703c4e3dd6c11d10"
+    },
+    {
+      "path": "ontology.jsonld",
+      "bytes": 5200,
+      "sha256": "79cda4e22c09d5dc259e857868a929e71ada4ac396bc604beff425009a970362"
+    },
+    {
+      "path": "zenith-v0.1.0/manifest.json",
+      "bytes": 8112,
+      "sha256": "d73a66b7f780b8ebc1ec1ac1f7d3791eec91a0259dca90faf37927636ad08a4a"
+    },
+    {
+      "path": "zenith-v0.1.0/modules/core.jsonld",
+      "bytes": 5856,
+      "sha256": "7b5700135b8880b587a9a09d81cf11f6a02e06ca9202a918cb94cc0e9feadc62"
+    },
+    {
+      "path": "zenith-v0.1.0/modules/messaging.jsonld",
+      "bytes": 2484,
+      "sha256": "c2eaad021db3c123fb6aa838f3f8ff09a306fe4a21b8d81094937dfa314a6a45"
+    },
+    {
+      "path": "zenith-v0.1.0/schemas/domain.schema.json",
+      "bytes": 1542,
+      "sha256": "cae22f80d6c64174b66906c03dd55869306e8ea0f2eb3799e8440442512e8c98"
+    }
+  ]
+}

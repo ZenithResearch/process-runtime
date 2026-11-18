@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "normalized-ontology-release.v1",
+  "ontologyId": "https://zenith-research.ca/ontology/normalized",
+  "version": "0.1.0",
+  "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/ontology.jsonld",
+  "publisher": "zn",
+  "reviewSource": {
+    "revision": "working-proposal-35",
+    "contentDigest": "33d757f04f74944174edeca3140b369a8fb5639fc46bf0c5f097d679b347691f"
+  },
+  "classes": [
+    "zn:AcceptanceCriterion",
+    "zn:Actor",
+    "zn:Agent",
+    "zn:Arena",
+    "zn:Artifact",
+    "zn:Blocker",
+    "zn:Case",
+    "zn:CasePlan",
+    "zn:Collection",
+    "zn:ContactInformation",
+    "zn:Decision",
+    "zn:Directory",
+    "zn:DirectoryEntry",
+    "zn:Domain",
+    "zn:EncryptedOutbox",
+    "zn:Entity",
+    "zn:Event",
+    "zn:ExternalLink",
+    "zn:Handoff",
+    "zn:Inbox",
+    "zn:Initiative",
+    "zn:Issue",
+    "zn:Milestone",
+    "zn:Organization",
+    "zn:Outbox",
+    "zn:Person",
+    "zn:Project",
+    "zn:Proposal",
+    "zn:Receipt",
+    "zn:Request",
+    "zn:Requirement",
+    "zn:StatusSet",
+    "zn:StatusValue",
+    "zn:Task",
+    "zn:Todo"
+  ],
+  "parents": {
+    "zn:AcceptanceCriterion": "owl:Thing",
+    "zn:Agent": "zn:Entity",
+    "zn:Arena": "owl:Thing",
+    "zn:Artifact": "owl:Thing",
+    "zn:Blocker": "owl:Thing",
+    "zn:Case": "owl:Thing",
+    "zn:CasePlan": "zn:Artifact",
+    "zn:Collection": "owl:Thing",
+    "zn:ContactInformation": "zn:Artifact",
+    "zn:Decision": "owl:Thing",
+    "zn:Directory": "zn:Collection",
+    "zn:DirectoryEntry": "zn:ContactInformation",
+    "zn:Domain": "owl:Thing",
+    "zn:EncryptedOutbox": "zn:Outbox",
+    "zn:Entity": "owl:Thing",
+    "zn:Event": "owl:Thing",
+    "zn:ExternalLink": "owl:Thing",
+    "zn:Handoff": "zn:Artifact",
+    "zn:Inbox": "zn:Collection",
+    "zn:Initiative": "zn:Todo",
+    "zn:Issue": "zn:Todo",
+    "zn:Milestone": "owl:Thing",
+    "zn:Organization": "zn:Entity",
+    "zn:Outbox": "zn:Collection",
+    "zn:Person": "zn:Entity",
+    "zn:Project": "zn:Todo",
+    "zn:Proposal": "zn:Todo",
+    "zn:Receipt": "zn:Artifact",
+    "zn:Request": "zn:Artifact",
+    "zn:Requirement": "owl:Thing",
+    "zn:StatusSet": "zn:Collection",
+    "zn:StatusValue": "owl:Thing",
+    "zn:Task": "zn:Todo",
+    "zn:Todo": "owl:Thing"
+  },
+  "modules": [
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/core.jsonld",
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/work.jsonld",
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/directory.jsonld",
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/request-management.jsonld",
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/vocabulary.jsonld",
+    "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/messaging.jsonld"
+  ],
+  "bundleDigest": "b1c55be54239e91eeff2548a21025985ae384632bd2037436189e0e0e74d16f9",
+  "bundleDigestAlgorithm": "sha256 of path-sorted '<sha256>  <path>\\n' entries",
+  "ontologyDocuments": [
+    {
+      "path": "ontology.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/ontology.jsonld"
+    },
+    {
+      "path": "modules/core.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/core",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/core.jsonld"
+    },
+    {
+      "path": "modules/directory.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/directory",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/directory.jsonld"
+    },
+    {
+      "path": "modules/messaging.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/messaging",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/messaging.jsonld"
+    },
+    {
+      "path": "modules/request-management.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/request-management",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/request-management.jsonld"
+    },
+    {
+      "path": "modules/vocabulary.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/vocabulary",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/vocabulary.jsonld"
+    },
+    {
+      "path": "modules/work.jsonld",
+      "ontologyId": "https://zenith-research.ca/ontology/normalized/modules/work",
+      "versionIri": "https://zenith-research.ca/ontology/normalized/v0.1.0/modules/work.jsonld"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 36,
+      "sha256": "58c42ca823e262766383f69e573d5e4cf47e07899ca2f63abf1af204806bf9d8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1461,
+      "sha256": "5de632f8f709dc9a51ef8744355d5bea671845f6f225946fcf2144f8ee621884"
+    },
+    {
+      "path": "domains.json",
+      "bytes": 1795,
+      "sha256": "7b02a74272f29ae2752987a287d30dd0555bb71171742aec57aa90e2f4fb083e"
+    },
+    {
+      "path": "examples/schema-cases.json",
+      "bytes": 1865,
+      "sha256": "fa1a409c660818a6b8caa941ea9ce8ec93dfb42022243a8f11be3386715156a4"
+    },
+    {
+      "path": "modules/core.jsonld",
+      "bytes": 5856,
+      "sha256": "7b5700135b8880b587a9a09d81cf11f6a02e06ca9202a918cb94cc0e9feadc62"
+    },
+    {
+      "path": "modules/directory.jsonld",
+      "bytes": 2138,
+      "sha256": "aa77d70b7223d2e18d0e9b4d5916d1f8a39d182453ae723b22fddc7c0ecdd800"
+    },
+    {
+      "path": "modules/messaging.jsonld",
+      "bytes": 2484,
+      "sha256": "c2eaad021db3c123fb6aa838f3f8ff09a306fe4a21b8d81094937dfa314a6a45"
+    },
+    {
+      "path": "modules/request-management.jsonld",
+      "bytes": 2430,
+      "sha256": "2cf8fd6089a5d4c4e67240a61195cd8c25b60684d43aef90003ae9a1695695d5"
+    },
+    {
+      "path": "modules/vocabulary.jsonld",
+      "bytes": 1788,
+      "sha256": "e0916fa6f137a431001071b9dcc4d241aaa7093dab590bba6803e2a940d5bc86"
+    },
+    {
+      "path": "modules/work.jsonld",
+      "bytes": 7029,
+      "sha256": "50b236421e6af13cd86322c692aa1a2e6449cb6e4dcc232f545d4fc0b476e97a"
+    },
+    {
+      "path": "ontology.jsonld",
+      "bytes": 3740,
+      "sha256": "fba4301cf6408c8b66cd0ab072cd1d8b9cc1483f552074e4705d93367d0a41d1"
+    },
+    {
+      "path": "profiles.json",
+      "bytes": 2417,
+      "sha256": "c6328d3940b2bfae28fd6263715833f751382680616159ef098fb7cb3043241e"
+    },
+    {
+      "path": "release.json",
+      "bytes": 2787,
+      "sha256": "b6796c555b5f3226f3349270cb0de6a9634c0fa51c1d94c16ff04d96b45cb909"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 53,
+      "sha256": "f195781f99ea8e5088e9a815ac211802c6efca877c6c71eb163ac7723671e92d"
+    },
+    {
+      "path": "schemas/case-plan.schema.json",
+      "bytes": 6351,
+      "sha256": "1413e9cfe3aeeb6be207ce70e95681a31ec1e122b342c1c0bb957b61be6b1304"
+    },
+    {
+      "path": "schemas/collection.schema.json",
+      "bytes": 714,
+      "sha256": "d805890f2439b2357fb7f8b3434128b5860859267cbf675f5ac5005a58e7244d"
+    },
+    {
+      "path": "schemas/core.schema.json",
+      "bytes": 9787,
+      "sha256": "cb9222ce2c13e1a911191b1aa0e3cef6a5baed4bd8e8ba4d3b0004875f510eed"
+    },
+    {
+      "path": "schemas/directory.schema.json",
+      "bytes": 2360,
+      "sha256": "8d5f1bc7bc86bd3166bf7c813ceb678cd0d7c9bc8349d8f281ea517985807d2f"
+    },
+    {
+      "path": "schemas/domain.schema.json",
+      "bytes": 1542,
+      "sha256": "cae22f80d6c64174b66906c03dd55869306e8ea0f2eb3799e8440442512e8c98"
+    },
+    {
+      "path": "schemas/evidence.schema.json",
+      "bytes": 1760,
+      "sha256": "c18a290ba9930bc008f5f2a0a018828f744493dd02739a2f2b6343eb6b7c6a1c"
+    },
+    {
+      "path": "schemas/request.schema.json",
+      "bytes": 6883,
+      "sha256": "3bd7b3555ccab509353831ee332a085665abf0688ee25af43afc11a7ce879776"
+    },
+    {
+      "path": "tools/verify_release.py",
+      "bytes": 10359,
+      "sha256": "cc1cf4c454a866c3814404cb3016bf61de78d258eea9164e9a8454f6093c72ce"
+    }
+  ]
+}
